@@ -1,0 +1,90 @@
+{
+  "name": "angular-gulp-setup",
+  "version": "1.0.0",
+  "description": "A example stack with gulp and angular",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "bower install && gulp deploy"
+  },
+  "author": "Alex Chin <alex@alexchin.co.uk>",
+  "license": "ISC",
+  "gulp": {
+    "srcDir": "src/",
+    "destDir": "public/",
+    "src": {
+      "js": "src/js/",
+      "scss": "src/scss/",
+      "fonts": "src/fonts/",
+      "images": "src/images/"
+    },
+    "dest": {
+      "js": "public/js/",
+      "css": "public/css/",
+      "fonts": "public/fonts/",
+      "images": "public/images/"
+    },
+    "main": {
+      "js": "app.js",
+      "index": "index.html",
+      "scss": "style.scss",
+      "server": "index.js",
+      "gulpfile": "gulpfile.js",
+      "packageJson": "package.json"
+    },
+    "vendor": {
+      "js": "vendor.js",
+      "css": "vendor.css"
+    },
+    "output": {
+      "js": "app.js",
+      "css": "style.css"
+    },
+    "selectors": {
+      "all": "*",
+      "js": "**/*.js",
+      "css": "**/*.css",
+      "scss": "**/*.scss",
+      "html": "**/*.html",
+      "images": "**/*.{png,jpg,jpeg,gif,ico}",
+      "fonts": "**/*.{eot,svg,ttf,woff,woff2}"
+    }
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "forever": "^0.15.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "bower": "^1.8.0",
+    "browser-sync": "^2.17.6",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlhint": "^0.3.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jshint": "^2.0.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-order": "^1.1.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-strip-css-comments": "^1.2.0",
+    "gulp-uglify": "^2.0.0",
+    "htmlhint-stylish": "^1.0.3",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "main-bower-files": "^2.13.1",
+    "require-dir": "^0.3.1"
+  }
+}
