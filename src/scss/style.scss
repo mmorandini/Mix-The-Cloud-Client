@@ -1,5 +1,14 @@
 // Import all of your scss files here
+@import "player";
+
+body{
+
+  main{
+    text-align: center;
+  }
+}
+
 .navbar-logo{
   width: 200px;
-  padding: 10px;
+
 }

@@ -10,21 +10,27 @@
   <!-- inject:css -->
   <!-- endinject -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+  <script>
+  SC.initialize({
+    client_id: 'uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM'
+  });
+  </script>
 
 </head>
-<body>
+<body ng-controller="MainCtrl as main">
   <header>
-    <img class="navbar-logo" src="/images/mtc.png" alt="">
+    <nav class="pa3 pa4-ns">
+      <a href="/"><img class="navbar-logo nav-link" src="/images/mtc.png" alt=""></a>
+      <a ui-sref="login" ng-show="!main.user" class="link dim gray    f6 f5-ns dib mr3">Login</a>
+      <a ui-sref="register" ng-show="!main.user" class="link dim gray    f6 f5-ns dib mr3">Register</a>
+      <a ng-click="main.logout()" ng-show="main.user" class="link dim gray    f6 f5-ns dib mr3">Logout</a>
+    </nav>
+
   </header>
   <main ui-view>
 
   </main>
-  <script>
-  $
-  .get("http://localhost:3000/api/users")
-  .done(function(res){
-    console.log(res);
-  });
-  </script>
+
 </body>
 </html>
