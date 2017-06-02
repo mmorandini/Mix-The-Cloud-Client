@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mtcApp">
 <head>
+  <base href="/">
   <meta charset="utf-8">
-  <title>Angular Stack Setup</title>
+  <title>Mix the cloud</title>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -14,8 +16,13 @@
   <header>
     <img class="navbar-logo" src="/images/mtc.png" alt="">
   </header>
+  <main ui-view>
+
+  </main>
   <script>
-  $.get("http://localhost:3000/api/users").done(function(res){
+  $
+  .get("http://localhost:3000/api/users")
+  .done(function(res){
     console.log(res);
   });
   </script>

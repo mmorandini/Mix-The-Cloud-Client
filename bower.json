@@ -15,6 +15,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-jwt": "^0.1.8",
+    "angular-ui-router": "^0.3.2",
+    "angular-resource": "^1.5.9",
+    "angular-animate": "^1.6.4",
+    "angular-messages": "^1.6.4",
+    "ng-marviluz": "ng-material#^0.0.4"
   }
 }
