@@ -7,20 +7,20 @@ function PlayerCtrl($scope){
 
   $scope.songs = [];
 
-  SC
-  .initialize({
-    client_id: 'uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM'
-  });
+  // SC
+  // .initialize({
+  //   client_id: 'uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM'
+  // });
 
-  SC
-  .get('/tracks', {
-    genres: 'techno',
-    limit: 20
-  })
-  .then(function(tracks) {
-    console.log(tracks);
-
-    const id = tracks[0].id;
+  // SC
+  // .get('/tracks', {
+  //   genres: 'techno',
+  //   limit: 20
+  // })
+  // .then(function(tracks) {
+  //   console.log(tracks);
+  console.log('from player-controller: ', $scope.tracks);
+    let id; 
     SC
       .stream(`/tracks/${id}`)
       .then(function(player){
@@ -32,7 +32,7 @@ function PlayerCtrl($scope){
         });
       });
 
-  });
+  // });
 }
 
 //

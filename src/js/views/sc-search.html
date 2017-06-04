@@ -2,9 +2,21 @@
 <div ng-controller="TracksSearchCtrl as vm" class="pa4">
   <h3>Search on SoundCloud</h3>
   <form ng-submit="vm.tracksSearch()" class="measure center pa2">
-    <input type="text" name="track-name" class="pa2 fl w-100" placeholder="Enter track title..">
-    <input type="text" name="genre" class="pa2 fl w-100" placeholder="Enter genre..">
-    <input type="text" name="artist" class="pa2 fl w-100" placeholder="Enter Artist name..">
+    <input type="text"
+          name="track-name"
+          class="pa2 fl w-100"
+          ng-model="vm.trackFind"
+          placeholder="Search by artist, genre or track title..">
+    <!-- <input type="text"
+          name="genre"
+          class="pa2 fl w-100"
+          ng-model="vm.findByGenre"
+          placeholder="Enter genre..">
+    <input type="text"
+          name="artist"
+          class="pa2 fl w-100"
+          ng-model="vm.findByArtist"
+          placeholder="Enter Artist name.."> -->
     <input type="submit" class="pa2 fl w-100" value="Search" >
   </form>
 
