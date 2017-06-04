@@ -7,17 +7,14 @@
           class="pa2 fl w-100"
           ng-model="vm.trackFind"
           placeholder="Search by artist, genre or track title..">
-    <!-- <input type="text"
-          name="genre"
-          class="pa2 fl w-100"
-          ng-model="vm.findByGenre"
-          placeholder="Enter genre..">
-    <input type="text"
-          name="artist"
-          class="pa2 fl w-100"
-          ng-model="vm.findByArtist"
-          placeholder="Enter Artist name.."> -->
+
     <input type="submit" class="pa2 fl w-100" value="Search" >
   </form>
-
+  <div ng-repeat="track in vm.tracks" class="fl w-25 pa2">
+    <p>{{track.title}}</p>
+    <p>{{(track.duration/60000).toFixed(2)}}</p>
+    <!-- SECONDS TO MINUTES CONVERSION TO BE FIXED -->
+    <button ng-click="startPlayerA(track)">A</button>
+    <button ng-click="startPlayerB(track)">B</button>
+  </div>
 </div>

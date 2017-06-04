@@ -17,11 +17,11 @@ function TracksSearchCtrl($scope){
     SC
     .get('/tracks', {
       q: vm.trackFind,
-      limit: 50
+      limit: 20
     })
     .then(function(tracks){
-      $scope.tracks = tracks;
-      console.log('searchCTRL says: ', $scope.tracks);
+      vm.tracks = tracks;
+      console.log('searchCTRL says: ', vm.tracks);
     });
 
 

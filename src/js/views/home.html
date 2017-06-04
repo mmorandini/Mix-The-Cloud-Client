@@ -4,11 +4,22 @@
   <div class="">
     <div class="">
       <div ng-controller="PlayerCtrl as vm">
-        <!-- <button ng-click="vm.PlayerCtrl()">Search</button> -->
-        <button id="play"> **PLAY** </button>
-        <button id="stop">**STOP**</button>
-      </div>
-    <sc-search></sc-search>
+
+
+        <div class="fl w-50 mv3 bg-grey">
+          <h3>Deck A</h3>
+          <button id="playA"> **PLAY** </button>
+          <button id="pauseA">**STOP**</button>
+        </div>
+        <div class="fl w-50 mv3 bg-grey">
+          <h3>Deck B</h3>
+          <button id="playB"> **PLAY** </button>
+          <button id="pauseB">**STOP**</button>
+        </div>
+        
+        <sc-search></sc-search>
+
+    </div>
     </div>
   </div>
 </div>
