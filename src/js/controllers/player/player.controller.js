@@ -2,38 +2,54 @@ angular
 .module('mtcApp')
 .controller('PlayerCtrl', PlayerCtrl);
 
+
 PlayerCtrl.$inject = ['$scope'];
 function PlayerCtrl($scope){
 
   $scope.startPlayerA = function(track){
     const id = track.id;
-    console.log(id);
-    SC
-      .stream(`/tracks/${id}`)
-      .then(function(player){
-        $('#playA').on('click', function(){
-          player.play();
-        });
-        $('#pauseA').on('click', function(){
-          player.pause();
-        });
-      });
+
+    const url = `http://api.soundcloud.com/tracks/${id}/stream` +
+    '?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM';
+    var context = new AudioContext(),
+      audio = new Audio(),
+      source;
+
+    audio.src = url;
+    audio.crossOrigin = 'anonymous';
+    source = context.createMediaElementSource(audio);
+    source.connect(context.destination);
+
+    $('#playA').on('click', function(){
+      source.mediaElement.play();
+    });
+    $('#pauseA').on('click', function(){
+      source.mediaElement.pause();
+    });
   };
+
 
   $scope.startPlayerB = function(track){
     const id = track.id;
-    console.log(id);
-    SC
-      .stream(`/tracks/${id}`)
-      .then(function(player){
-        $('#playB').on('click', function(){
-          player.play();
-        });
-        $('#pauseB').on('click', function(){
-          player.pause();
-        });
-      });
+
+    const url = `http://api.soundcloud.com/tracks/${id}/stream` +
+    '?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM';
+    console.log(url);
+    var context = new AudioContext(),
+      audio = new Audio(),
+      source;
+
+    audio.src = url;
+    audio.crossOrigin = 'anonymous';
+    source = context.createMediaElementSource(audio);
+    source.connect(context.destination);
+
+    $('#playB').on('click', function(){
+      source.mediaElement.play();
+      console.log('source.mediaElement: ',source.mediaElement);
+    });
+    $('#pauseB').on('click', function(){
+      source.mediaElement.pause();
+    });
   };
 }
-
-//
