@@ -3,12 +3,11 @@ angular
 .controller('PlayerCtrl', PlayerCtrl);
 
 
-PlayerCtrl.$inject = ['$scope'];
-function PlayerCtrl($scope){
+PlayerCtrl.$inject = ['$scope', 'Analyzer'];
+function PlayerCtrl($scope, Analyzer){
 
   $scope.startPlayerA = function(track){
     const id = track.id;
-
     const url = `http://api.soundcloud.com/tracks/${id}/stream` +
     '?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM';
     var context = new AudioContext(),
@@ -19,6 +18,13 @@ function PlayerCtrl($scope){
     audio.crossOrigin = 'anonymous';
     source = context.createMediaElementSource(audio);
     source.connect(context.destination);
+    console.log(source.mediaElement);
+    // Analyzer.getPeaksAtThreshold(source.mediaElement, 10);
+
+
+
+    // Analyzer.getFile(audio.src);
+
 
     $('#playA').on('click', function(){
       source.mediaElement.play();
