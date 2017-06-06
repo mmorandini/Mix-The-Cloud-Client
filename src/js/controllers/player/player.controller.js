@@ -4,7 +4,7 @@ angular
 
 
 PlayerCtrl.$inject = ['$scope', 'Analyzer'];
-function PlayerCtrl($scope, Analyzer){
+function PlayerCtrl($scope){
 
   $scope.startPlayerA = function(track){
     const id = track.id;
@@ -19,13 +19,7 @@ function PlayerCtrl($scope, Analyzer){
     source = context.createMediaElementSource(audio);
     source.connect(context.destination);
     console.log(source.mediaElement);
-    // Analyzer.getPeaksAtThreshold(source.mediaElement, 10);
-
-
-
     // Analyzer.getFile(audio.src);
-
-
     $('#playA').on('click', function(){
       source.mediaElement.play();
     });
@@ -33,8 +27,6 @@ function PlayerCtrl($scope, Analyzer){
       source.mediaElement.pause();
     });
   };
-
-
   $scope.startPlayerB = function(track){
     const id = track.id;
 
@@ -58,4 +50,5 @@ function PlayerCtrl($scope, Analyzer){
       source.mediaElement.pause();
     });
   };
+
 }
