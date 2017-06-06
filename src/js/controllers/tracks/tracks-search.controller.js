@@ -2,7 +2,8 @@ angular
 .module('mtcApp')
 .controller('TracksSearchCtrl', TracksSearchCtrl);
 
-function TracksSearchCtrl($scope){
+TracksSearchCtrl.$inject = [];
+function TracksSearchCtrl(){
   const vm = this;
 
   vm.tracksSearch = () => {
