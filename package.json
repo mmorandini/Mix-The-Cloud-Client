@@ -1,12 +1,12 @@
 {
-  "name": "angular-gulp-setup",
+  "name": "Mix The Cloud",
   "version": "1.0.0",
-  "description": "A example stack with gulp and angular",
+  "description": "SoundCloud online mixer",
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install && gulp deploy"
   },
-  "author": "Alex Chin <alex@alexchin.co.uk>",
+  "author": "Matteo Morandini <emmemorandini@gmail.com>",
   "license": "ISC",
   "gulp": {
     "srcDir": "src/",
