@@ -10,13 +10,20 @@
 
     <input type="submit" class="pa2 fl w-100" value="Search" >
   </form>
-  <div ng-repeat="track in vm.tracks" class="fl w-25 pa2">
-    <p>{{track.title}}</p>
-    <p>{{(track.duration/60000).toFixed(2)}}</p>
-    <!-- SECONDS TO MINUTES CONVERSION TO BE FIXED -->
-    <button ng-click="startPlayerA(track)">A</button>
-    <button ng-click="startPlayerB(track)">B</button>
-    <button ng-click="startBuffer(track)">YO</button>
+  <div ng-repeat="track in vm.tracks" class="fl w-100">
+    <div class="fl w-80 pa1">
+      <div class="fl w-80 tr pa2">
+        <p>{{track.title}}
+        <span class="tr">{{(track.duration/60000).toFixed(2)}}</span>
+        </p>
+        <p>{{track.bpm}}</p>
+        <!-- SECONDS TO MINUTES CONVERSION TO BE FIXED -->
+      </div>
+      <div class="fl w-20 fr">
+        <button ng-click="startPlayerA(track)" class="pa3">A</button>
+        <button ng-click="startPlayerB(track)" class="pa3">B</button>
+      </div>
+    </div>
 
   </div>
 </div>

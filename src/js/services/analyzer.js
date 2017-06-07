@@ -2,8 +2,8 @@ angular
 .module('mtcApp')
 .service('Analyzer', Analyzer);
 
-Analyzer.$inject = ['$http'];
-function Analyzer($http){
+Analyzer.$inject = [];
+function Analyzer(){
   // return {
   //   getFile(url) {
   //     const self = this;

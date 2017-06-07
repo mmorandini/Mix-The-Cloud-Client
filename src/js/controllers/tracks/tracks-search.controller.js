@@ -6,25 +6,17 @@ TracksSearchCtrl.$inject = [];
 function TracksSearchCtrl(){
   const vm = this;
 
-  vm.tracksSearch = () => {
+  vm.tracksSearch = search;
 
-
-    // SC
-    // .initialize({
-    //   client_id: 'S9C5RLmHrFya8jd9Ci42dsVLIl79rRi1'
-    // });
-
-    // find all tracks with the genre 'techno' that have a tempo greater than 120 bpm.
+  function search() {
     SC
     .get('/tracks', {
       q: vm.trackFind,
-      limit: 20
+      limit: 200
     })
     .then(function(tracks){
       vm.tracks = tracks;
-      console.log('searchCTRL says: ', vm.tracks);
+      
     });
-
-
-  };
+  }
 }
