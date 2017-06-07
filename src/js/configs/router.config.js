@@ -22,10 +22,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
     templateUrl: '/js/views/users/edit.html',
     controller: 'UsersEditCtrl as usersEdit'
   })
-  .state('home', {
-    url: '/',
-    templateUrl: '/js/views/home.html'
-  })
+  // .state('home', {
+  //   url: '/',
+  //   templateUrl: '/js/views/home.html'
+  // })
   .state('login', {
     url: '/login',
     templateUrl: '/js/views/login.html',
@@ -35,6 +35,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
     url: '/register',
     templateUrl: '/js/views/register.html',
     controller: 'RegisterCtrl as register'
+  })
+  .state('test', {
+    url: '/',
+    templateUrl: '/js/views/test.html',
+    controller: 'TestCtrl as test'
   });
 
   $urlRouterProvider.otherwise('/');

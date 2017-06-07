@@ -1,0 +1,56 @@
+<h1>Mixer... Youtube and Soundcloud...</h1>
+
+
+<div id="console" class="tc pa2 pt5">
+
+	<div id="deck1" class="fl w-40">
+		<div id="youtubePlayer1" class="yt-player"></div>
+		<audio controls="" id="soundcloudPlayer1" class="" src="">
+		<button id="playA">PLAY</button>
+		<button id="pauseA">PAUSE</button>
+		
+		
+		<button>Loop</button>
+	</div>
+	<div id="controls" class="fl w-20">
+		<div class="fl w-100 mv3 bg-grey">
+          <h5>Crossfader</h5>
+          <input type="range" min="0" max="1" step="0.05" id="crossfade" />
+        </div>
+	</div>
+	<div id="deck2" class="fl w-40">
+		<div id="youtubePlayer2" class="yt-player"></div>
+		<audio controls="" id="soundcloudPlayer2" class="" src="">
+		
+		<button id="playB">PLAY</button>
+		<button id="pauseB">PAUSE</button>
+		<button>Loop</button>
+	</div>
+	
+</div>
+
+
+
+<h2>SEARCH</h2>
+<form ng-submit="test.search()">
+  <input ng-model="test.query">
+  <select ng-model="test.searchType" ng-options="type as type for type in test.searchTypes"></select>
+  <input type="submit">
+</form>
+
+<ul class="list result pa0">
+  <li ng-repeat="result in test.results track by $index" class="list white">
+  	<div ng-if="result.title" class="search-results">{{result.title}}
+  	<div class="fr">
+  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn">Deck 1</button>
+  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn">Deck 2</button>
+  	</div>
+  	</div>
+  	<div ng-if="!result.title" class="search-results">{{result.snippet.title}}
+  	<div class="fr">
+  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn">Deck 1</button>
+  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn">Deck 2</button>
+  	</div>
+  	</div>
+  </li>
+</ul>

@@ -1,12 +1,62 @@
 body{
 	
-	text-align: center;
-	height: 100%;
+	height: 400vh;
 	background-color: black;
 	color: #009ecb;
+	main{
+		text-align: center;
+	}
 }
 
 
 h1,h2,h3,h4 {
 	color: white;
+}
+
+#console{
+	height: 70vh;
+	background: gray;
+	width: 90%;
+	margin: 0 auto;
+}
+result{
+	margin: 0 auto;
+	margin-top: 15px;
+}
+
+.navbar-logo{
+  width: 200px;
+}
+
+.search-results{
+	margin: 2px auto;
+	background: grey;
+	padding: 20px;
+    width: 50%;
+    border: 2px solid #f6f6f6;
+}
+.yt-player{
+	border-radius: 90px;
+}
+
+.load-btn{
+	
+    top:50%;
+    left:50%;
+ }
+
+.m-auto{
+ 	margin: 0 auto;
+ }
+
+div.ytp-gradient-top{
+	display: none !important;
+}
+
+div.ytp-crome-top{
+	display: none;
+}
+
+button.ytp-large-play-button.ytp-button{
+	display: none !important;
 }
