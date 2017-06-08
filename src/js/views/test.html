@@ -4,27 +4,42 @@
 <div id="console" class="tc pa2 pt5">
 
 	<div id="deck1" class="fl w-40">
-		<div id="youtubePlayer1" class="yt-player"></div>
-		<audio controls="" id="soundcloudPlayer1" class="" src="">
-		<button id="playA">PLAY</button>
-		<button id="pauseA">PAUSE</button>
-		
-		
-		<button>Loop</button>
+		<div id="youtubePlayer1" class="yt-player dn"></div>
+		<audio controls="" id="soundcloudPlayer1" class="" src="" ng-show="src"></audio>
+		<div id="tt1"></div>
+		<div id="deckA-outer"></div>
+		<div id="deckA-ctrls">
+			<button id="playA">PLAY</button>
+			<button id="pauseA">PAUSE</button>
+			<button>Loop</button>
+		</div>
 	</div>
+	
 	<div id="controls" class="fl w-20">
 		<div class="fl w-100 mv3 bg-grey">
-          <h5>Crossfader</h5>
-          <input type="range" min="0" max="1" step="0.05" id="crossfade" />
+			<div id="deckA-gain-slider">
+				<input type="range" orient="vertical" min="0" max="10" step="1" id="deckA-gain-input">
+			</div>
+			<div id="deckB-gain-slider">
+				<input type="range" orient="vertical" min="0" max="10" step="1" id="deckB-gain-input">
+			</div>
+			<div id="crossfade-range">
+        		<h5>Crossfader</h5>
+        		<input type="range" min="0" max="1" step="0.05" id="crossfade"/>
+        	</div>
         </div>
 	</div>
+	
 	<div id="deck2" class="fl w-40">
-		<div id="youtubePlayer2" class="yt-player"></div>
-		<audio controls="" id="soundcloudPlayer2" class="" src="">
-		
-		<button id="playB">PLAY</button>
-		<button id="pauseB">PAUSE</button>
-		<button>Loop</button>
+		<div id="youtubePlayer2" class="yt-player dn"></div>
+		<audio controls="" id="soundcloudPlayer2" class="" src="" ng-show="src"></audio>
+		<div id="tt2"></div>
+		<div id="deckB-outer"></div>
+		<div id="deckB-ctrls">
+			<button id="playB">PLAY</button>
+			<button id="pauseB">PAUSE</button>
+			<button>Loop</button>
+		</div>
 	</div>
 	
 </div>

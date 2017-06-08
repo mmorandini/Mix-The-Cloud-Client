@@ -1,32 +1,134 @@
-body{
-	
-	height: 400vh;
-	background-color: black;
-	color: #009ecb;
-	main{
-		text-align: center;
-	}
-}
-
-
-h1,h2,h3,h4 {
-	color: white;
-}
-
 #console{
 	height: 70vh;
-	background: gray;
+	background-image: url('/images/3d-skin.jpg');
+	background-size: cover;
+	background-position: center;
 	width: 90%;
 	margin: 0 auto;
+	border: 3px solid grey;
+    border-radius: 10px;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+
+}
+#tt1, #tt2{
+
+	background-image: url('/images/neon-turntable.gif');
+	background-size: cover;
+	background-position: center;
+	width: 400px;
+	height: 400px;
+	position: absolute;
+}
+#tt1{
+	
+	left: 127px;
+    top: 233px;
+}
+#tt2{
+	right: 65px;
+    top: 233px;
+}
+#deckA-outer{
+	width: 310px;
+    height: 310px;
+    border: 10px solid white;
+    border-radius: 180px;
+    position: absolute;
+    left: 143px;
+    top: 272px;
+}
+#deckB-outer{
+	width: 310px;
+    height: 310px;
+    border: 10px solid white;
+    border-radius: 180px;
+    position: absolute;
+    right: 143px;
+    top: 272px;
 }
 result{
 	margin: 0 auto;
 	margin-top: 15px;
 }
 
-.navbar-logo{
-  width: 200px;
+#deckA-ctrls{
+	background: black;
+	position: absolute;
+    top: 593px;
+    left: 203px;
+    width: 200px;
 }
+
+#deckB-ctrls{
+	background: black;
+	position: absolute;
+    top: 593px;
+    right: 203px;
+    width: 200px;
+}
+
+#controls{
+	position: absolute;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	height: 55vh;
+    left: 40%;
+    top: 8%;
+    h5{
+    color: white;
+    }
+}
+
+#deckA-gain-slider,  #deckB-gain-slider{
+
+  // Slider
+  #deckA-gain-input, #deckB-gain-input {
+    -webkit-appearance: none;
+    height: 200px;
+    border-radius: 5px;
+    background: #ccc;
+    outline: none;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+   }
+
+   position: absolute;
+
+}
+
+// Firefox Overrides
+::-moz-range-track {
+    background: #ccc;
+    border: 0;
+}
+
+input::-moz-focus-inner { 
+  border: 0; 
+}
+
+#deckA-gain-slider{
+	top: 80px;
+	left: -120px;
+}
+
+#deckB-gain-slider{
+	top: 80px;
+	right: -120px;
+}
+
+#crossfade-range{
+	position: absolute;
+    top: 310px;
+    left: 11px;
+}
+
+#crossfade{
+	width: 260px;
+
+}
+
+
 
 .search-results{
 	margin: 2px auto;
@@ -44,19 +146,3 @@ result{
     top:50%;
     left:50%;
  }
-
-.m-auto{
- 	margin: 0 auto;
- }
-
-div.ytp-gradient-top{
-	display: none !important;
-}
-
-div.ytp-crome-top{
-	display: none;
-}
-
-button.ytp-large-play-button.ytp-button{
-	display: none !important;
-}

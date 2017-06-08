@@ -19,7 +19,7 @@ function TestCtrl($http, $window) {
     } else {
       searchSoundCloud(vm.query);
     }
-    // controls();
+    controls();
   };
 
 
@@ -50,24 +50,24 @@ function TestCtrl($http, $window) {
     }
   };
 
-  // function controls(){
-  //   $('#playA').on('click', () => {
-  //      soundcloudPlayer1.play();
-  //      youtubePlayer1.playVideo();
-  //   });
-  //   $('#pauseA').on('click', () => {
-  //      soundcloudPlayer1.pause();
-  //      youtubePlayer1.pauseVideo();
-  //   });
-  //   $('#playB').on('click', () => {
-  //      soundcloudPlayer2.play();
-  //      youtubePlayer2.playVideo();
-  //   });
-  //   $('#pauseB').on('click', () => {
-  //      soundcloudPlayer2.pause();
-  //      youtubePlayer2.pauseVideo();
-  //   });
-  // }
+  function controls(){
+    $('#playA').on('click', () => {
+       soundcloudPlayer1.play();
+       youtubePlayer1.playVideo();
+    });
+    $('#pauseA').on('click', () => {
+       soundcloudPlayer1.pause();
+       youtubePlayer1.pauseVideo();
+    });
+    $('#playB').on('click', () => {
+       soundcloudPlayer2.play();
+       youtubePlayer2.playVideo();
+    });
+    $('#pauseB').on('click', () => {
+       soundcloudPlayer2.pause();
+       youtubePlayer2.pauseVideo();
+    });
+  }
   /*
   
   AUDIO/VIDEO MANIPULATION

@@ -1,0 +1,474 @@
+body {
+  background-color:#000;
+  overflow:hidden;
+}
+
+#tutorial-container {
+  display:none;
+  float:left;
+  position:relative;
+  background-color:#000;
+  width:900px;
+  height:499px;
+  z-index:99999;
+}
+
+#tutorial-container p {
+  text-align:center;  
+  font-size:30px;
+  font-family:'Nova Square';
+  color:#fff;
+  cursor:pointer;
+}
+
+#tutorial-container p:hover {
+  text-shadow:0 0 10px #3FAEFD, 0 0 10px #3FAEFD;
+}
+
+#tutorial {
+  position:relative;  
+  box-shadow:0 0 30px #fff;
+  border-radius:10px 10px 60px 60px;
+  overflow:hidden;
+  width:100%;
+  height:499px;
+}
+
+#tutorial-button {  
+  position:absolute;
+  appearance:none;
+  font-size:55px;
+  top:160px;
+  left:414px;
+  margin:auto;    
+}
+
+#tutorial-button div {
+  font-family:'Nova Square';
+  font-size:50px;
+  width:70px;
+  height:63px;
+  border:none;
+  border-radius:50px;
+  background-color:#333;
+  color:#111;
+  cursor:pointer;
+  box-shadow:0 0 20px #000;
+  font-weight:bold;
+  text-align:center;
+  padding-top:7px;  
+}
+
+#tutorial-button div:hover {
+  box-shadow:0 0 50px #3FAEFD, 0 0 50px #3FAEFD;
+  background-color:#000;
+  color:#fff;
+}
+
+#credits {  
+  position:absolute;
+  font-size:55px;
+  top:80px;
+  left:352px;
+  margin:auto;  
+  font-family: 'Kristi', sans-serif;
+}
+
+#credits a {
+  text-decoration:none;
+  color:#ddd;
+}
+
+#credits:hover {
+  text-shadow:0 0 10px #3FAEFD, 0 0 10px #3FAEFD;
+}
+
+main {
+  position:relative;
+  width:900px;
+  height:499px;
+  background-image:url(http://www.michelacosta.com/images/2qyIBfw.jpg);
+  margin:150px auto 0 auto;
+}
+
+#songloader-container {
+  width:100%;
+  height:150px;
+  position:fixed;
+  top:0;
+  margin:auto;
+  overflow:hidden;
+}
+
+#songloader {
+  width:600px;
+  background-color:#000;
+  height:150px;
+  margin:auto;
+  position:relative;
+  top:150px;
+  border-radius:20px 20px 0 0;
+  border:6px solid #444;
+  box-shadow:0px 0px 5px #3FAEFD inset;
+  padding:5px;
+}
+
+#left .jog,
+#left .tempo,
+#left .play,
+#left .volume,
+#right .jog,
+#right .tempo,
+#right .play,
+#right .volume,
+#left .less,
+#left .more,
+#right .less,
+#right .more,
+#left .load,
+#right .load,
+#left .sync,
+#right .sync,
+#crossfade {
+  position:absolute;
+  float:left;
+  background-repeat:no-repeat;
+}
+
+#left .tempo:hover,
+#left .volume:hover,
+#right .tempo:hover,
+#right .volume:hover,
+#left .play:hover,
+#right .play:hover,
+#left .less:hover,
+#left .more:hover,
+#right .less:hover,
+#right .more:hover,
+#left .load:hover,
+#right .load:hover,
+#left .sync:hover,
+#right .sync:hover,
+#crossfade:hover {
+  box-shadow:0 0 15px #DF6165, 0 0 15px #DF6165;
+  cursor:pointer;
+}
+
+#left .jog {
+  width:262px;
+  height:262px;
+  background-image:url(http://www.michelacosta.com/images/eOI2jNr.png);
+  left:77px;
+  top:149px;
+  animation: girar infinite linear;
+  animation-duration: 5s;
+}
+
+.running {
+  animation-play-state: running!important;
+}
+
+.paused {
+  animation-play-state: paused!important;
+}
+
+#left .tempo {
+  width:48px;
+  height:20px;
+  left:35px;
+  top:91px;
+  background-image:url(http://www.michelacosta.com/images/OBlswus.png);
+}
+
+#left .volume {
+  width:48px;
+  height:20px;
+  left:389px;
+  top:278px;
+  background-image:url(http://www.michelacosta.com/images/OBlswus.png);
+}
+
+.info {
+  position:absolute;
+  width:270px;
+  height:60px;
+  background-color:#000;
+  border-radius:5px;
+  border:2px solid #333;
+  box-shadow:0 0 10px #555 inset;
+  overflow:hidden;
+}
+
+#left .info {
+  left:90px;
+  top:12px;
+}
+
+#right .info {
+  right:90px;
+  top:12px;
+}
+
+#left .sync {
+  width:32px;
+  height:32px;
+  left:35px;
+  top:187px;
+  border-radius:0 0 10px 10px;
+}
+
+#right .sync {
+  width:32px;
+  height:32px;
+  right:35px;
+  top:187px;
+  border-radius:0 0 10px 10px;
+}
+
+#left .play {
+  width:46px;
+  height:46px;
+  left:85px;
+  top:401px;
+  border-radius:23px;
+}
+
+#left .less {
+  width:33px;
+  height:32px;
+  left:146px;
+  top:433px;
+  border-radius:16px;
+}
+
+#left .more {
+  width:33px;
+  height:32px;
+  left:192px;
+  top:439px;
+  border-radius:16px;
+}
+
+#left .load {
+  width:32px;
+  height:32px;
+  left:372px;
+  top:32px;
+  border-radius:16px;
+}
+
+#right .load {
+  width:32px;
+  height:32px;
+  left:495px;
+  top:32px;
+  border-radius:16px;
+}
+
+#right .less {
+  width:33px;
+  height:32px;
+  left:630px;
+  top:433px;
+  border-radius:16px;
+}
+
+#right .more {
+  width:33px;
+  height:32px;
+  left:675px;
+  top:439px;
+  border-radius:16px;
+}
+
+#right .jog {
+  width:262px;
+  height:262px;
+  background-image:url(http://www.michelacosta.com/images/eOI2jNr.png);
+  left:562px;
+  top:149px;
+  animation: girar infinite linear;
+  animation-duration: 5s;
+}
+
+#right .tempo {
+  width:48px;
+  height:20px;
+  left:818px;
+  top:91px;
+  background-image:url(http://www.michelacosta.com/images/OBlswus.png);
+}
+
+#right .volume {
+  width:48px;
+  height:20px;
+  left:465px;
+  top:278px;
+  background-image:url(http://www.michelacosta.com/images/OBlswus.png);
+}
+
+#right .play {
+  width:46px;
+  height:46px;
+  left:568px;
+  top:401px;
+  border-radius:23px;
+}
+
+.info-time {
+  display:inline-block;
+  position:absolute;
+  bottom:7px;
+  left:0;
+  height:20px;
+  font-family:'Nova Square', sans-serif;
+  color:#3FAEFD;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding:10px 10px 0 10px;
+  width:120px;
+  font-weight:bold;
+}
+
+input[type=range] {
+  appearance:none;
+  display:inline-block;
+  position:absolute;  
+  left:0;
+  width:100%;
+  height:3px;
+  bottom:0;
+}
+
+/* Estilos para el input range copiados de css-tricks.com/styling-cross-browser-compatible-range-inputs-css */
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 11px;
+  width: 10px;
+  border-radius: 3px;
+  background: #9a9a9a;
+  cursor: pointer;
+  margin-top: -4px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+/* Estilos para el input range copiados de css-tricks.com/styling-cross-browser-compatible-range-inputs-css */
+
+.info-tempo {
+  display:inline-block;
+  position:absolute;
+  bottom:7px;
+  right:0;
+  height:20px;
+  font-family:'Nova Square', sans-serif;
+  color:#3FAEFD;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding:10px 10px 0 10px;
+  width:100px;
+}
+
+.info-tempo span {
+  font-size:8px;
+}
+
+.song {
+  display:inline-block;
+  position:absolute;
+  left:0;
+  font-family:'Nova Square', sans-serif;
+  color:#3FAEFD;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding:10px;
+}
+
+#crossfade {
+  width:24px;
+  height:46px;
+  left:57px;
+  background-image:url(http://www.michelacosta.com/images/5bR284h.png);  
+}
+
+@keyframes girar {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% {
+    transform: rotate(360deg); 
+  }
+}
+
+#crossfade-container {
+  position:relative;
+  left:380px;
+  top:432px;
+  width:138px;
+  height:46px;
+}
+
+#log {
+  color:#fff;
+}
+
+table {
+  width:100%;
+  font-family:'Nova Square', sans-serif;
+  color:#3FAEFD;
+}
+
+th {
+  border-bottom:1px solid #3FAEFD;
+}
+
+td {
+  border-bottom:1px dotted #3FAEFD;
+  font-size:14px;
+}
+
+td:nth-child(3), 
+td:nth-child(4) {
+  text-align:right;
+}
+
+tbody tr:hover {
+  background-color:#3FAEFD;
+  color:#000;
+  cursor:pointer;
+}
+
+iframe {
+  position:relative;
+  left:96px;
+  top:2px;
+}
