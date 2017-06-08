@@ -5,8 +5,13 @@ angular
 TestCtrl.$inject = ['$http', '$window'];
 function TestCtrl($http, $window) {
   const vm = this;
+  
+  vm.deck1 = 'SoundCloud';
+  vm.deck2 = 'SoundCloud';
   vm.searchType = 'SoundCloud';
   vm.searchTypes = ['Youtube', 'SoundCloud'];
+  vm.crossfade = 50;
+  
   /*
 
     UI
@@ -19,7 +24,6 @@ function TestCtrl($http, $window) {
     } else {
       searchSoundCloud(vm.query);
     }
-    controls();
   };
 
 
@@ -28,46 +32,85 @@ function TestCtrl($http, $window) {
     if (vm.searchType === 'Youtube') {
       id = result.id.videoId;
       if (deck == 1) {
+        vm.deck1 = 'Youtube';
         youtubePlayer1.loadVideoById(id, 5, "large");
         youtubePlayer1.stopVideo();
       } else {
+        vm.deck2 = 'Youtube';
         youtubePlayer2.loadVideoById(id, 5, "large");
         youtubePlayer2.stopVideo();
       }
     } else {
       if (deck == 1){
+        vm.deck1 = 'SoundCloud';
+        youtubePlayer1.stopVideo();
         id = result.id;
-      const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
-      $('#soundcloudPlayer1').attr('src', url );
+        const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
+        $('#soundcloudPlayer1').attr('src', url );
       // soundcloudPlayer1.src = url;
       // soundcloudPlayer1.crossOrigin = 'anonymous';
       } else {
+        vm.deck2 = 'SoundCloud';
         id = result.id;
-      const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
-      $('#soundcloudPlayer2').attr('src', url );
+        const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
+        $('#soundcloudPlayer2').attr('src', url );
       }
-      
+    }
+    // Set the base video volume
+    fade();
+  };
+
+  vm.playDeck1 = () => {
+    if (vm.deck1 === 'Youtube') {
+      youtubePlayer1.playVideo();
+    } else {
+      soundcloudPlayer1.play();
     }
   };
 
-  function controls(){
-    $('#playA').on('click', () => {
-       soundcloudPlayer1.play();
-       youtubePlayer1.playVideo();
-    });
-    $('#pauseA').on('click', () => {
-       soundcloudPlayer1.pause();
-       youtubePlayer1.pauseVideo();
-    });
-    $('#playB').on('click', () => {
-       soundcloudPlayer2.play();
-       youtubePlayer2.playVideo();
-    });
-    $('#pauseB').on('click', () => {
-       soundcloudPlayer2.pause();
-       youtubePlayer2.pauseVideo();
-    });
+  vm.playDeck2 = () => {
+    if (vm.deck2 === 'Youtube') {
+      youtubePlayer2.playVideo();
+    } else {
+      soundcloudPlayer2.play();
+    }
+  };
+
+  vm.pauseDeck1 = () => {
+    if (vm.deck1 === 'Youtube') {
+      youtubePlayer1.pauseVideo();
+    } else {
+      soundcloudPlayer1.pause();
+    }
+  };
+
+  vm.pauseDeck2 = () => {
+    if (vm.deck2 === 'Youtube') {
+      youtubePlayer2.pauseVideo();
+    } else {
+      soundcloudPlayer2.pause();
+    }
+  };
+
+  vm.fade = fade;
+
+  function fade() {
+    vm.deck1Fade = 100 - (2 * (vm.crossfade - 50));
+    vm.deck2Fade = 100 - (2 * (50 - vm.crossfade));
+    if (vm.deck1 === 'Youtube') {
+      youtubePlayer1.setVolume(vm.deck1Fade);
+    } else {
+
+    }
+
+    if (vm.deck1 === 'Youtube') {
+      youtubePlayer2.setVolume(vm.deck2Fade);
+    } else {
+
+    }
   }
+
+
   /*
   
   AUDIO/VIDEO MANIPULATION
@@ -202,8 +245,8 @@ function TestCtrl($http, $window) {
     console.log('onYouTubeIframeAPIReady');
     // The first arguement 'player' here is the ID of the element to add a player
     youtubePlayer1 = new YT.Player('youtubePlayer1', {
-      height: '200',
-      width: '200',
+      height: '300',
+      width: '300',
       videoId: '',
       
       // events: {
@@ -214,8 +257,8 @@ function TestCtrl($http, $window) {
     });
 
     youtubePlayer2 = new YT.Player('youtubePlayer2', {
-      height: '200',
-      width: '200',
+      height: '300',
+      width: '300',
       videoId: '',
 
       

@@ -1,3 +1,9 @@
+@-webkit-keyframes spin {
+	0%  {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(360deg);}	
+}
+
+
 #console{
 	height: 70vh;
 	background-image: url('/images/3d-skin.jpg');
@@ -9,6 +15,7 @@
     border-radius: 10px;
     border-bottom-left-radius: 45px;
     border-bottom-right-radius: 45px;
+    box-shadow: 10px 10px 5px white;
 
 }
 #tt1, #tt2{
@@ -28,6 +35,18 @@
 #tt2{
 	right: 65px;
     top: 233px;
+}
+.coverA{
+	position: absolute;
+    top: 234px;
+    left: 101px;
+    z-index: 1;
+}
+.coverB{
+	position: absolute;
+    top: 244px;
+    right: 108px;
+    z-index: 1;
 }
 #deckA-outer{
 	width: 310px;
@@ -51,6 +70,17 @@ result{
 	margin: 0 auto;
 	margin-top: 15px;
 }
+#youtubePlayer1{
+	position: absolute;
+    left: 200px;
+    top: 325px;
+}
+#youtubePlayer2{
+	position: absolute;
+    right: 200px;
+    top: 325px;
+}
+
 
 #deckA-ctrls{
 	background: black;
@@ -58,6 +88,7 @@ result{
     top: 593px;
     left: 203px;
     width: 200px;
+    z-index: 1
 }
 
 #deckB-ctrls{
@@ -66,6 +97,7 @@ result{
     top: 593px;
     right: 203px;
     width: 200px;
+    z-index: 1;
 }
 
 #controls{
@@ -127,14 +159,25 @@ input::-moz-focus-inner {
 	width: 260px;
 
 }
-
-
+.yt-wrap-deck1{
+	position: absolute;
+    left: -52px;
+    top: -35px;
+    -webkit-animation: spin 4s infinite linear;
+}
+.yt-wrap-deck2{
+	position: absolute;
+    right: -52px;
+    top: -47px;
+    -webkit-animation: spin 4s infinite linear;
+}
 
 .search-results{
 	margin: 2px auto;
 	background: grey;
 	padding: 20px;
     width: 50%;
+    height: 70px;
     border: 2px solid #f6f6f6;
 }
 .yt-player{
