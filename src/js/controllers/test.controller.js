@@ -11,7 +11,18 @@ function TestCtrl($http, $window) {
   vm.searchType = 'SoundCloud';
   vm.searchTypes = ['Youtube', 'SoundCloud'];
   vm.crossfade = 50;
-  
+  vm.gainA = 80;
+  vm.gainB = 80;
+  vm.titleA = '';
+  vm.titleB = '';
+  vm.playA = false;
+  vm.playB = false;
+  // vm.wavesurfer = WaveSurfer.create({
+  //   container: '#waveform',
+  //   waveColor: 'violet',
+  //   progressColor: 'purple'
+  // });
+
   /*
 
     UI
@@ -35,10 +46,12 @@ function TestCtrl($http, $window) {
         vm.deck1 = 'Youtube';
         youtubePlayer1.loadVideoById(id, 5, "large");
         youtubePlayer1.stopVideo();
-      } else {
+        vm.titleA = result.snippet.title;
+      } else if (deck == 2) {
         vm.deck2 = 'Youtube';
         youtubePlayer2.loadVideoById(id, 5, "large");
-        youtubePlayer2.stopVideo();
+        youtubePlayer2.stopVideo(); 
+        vm.titleB = result.snippet.title;
       }
     } else {
       if (deck == 1){
@@ -47,13 +60,14 @@ function TestCtrl($http, $window) {
         id = result.id;
         const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
         $('#soundcloudPlayer1').attr('src', url );
-      // soundcloudPlayer1.src = url;
-      // soundcloudPlayer1.crossOrigin = 'anonymous';
+        vm.titleA = result.title;
+        vm.wavesurfer.load(url);
       } else {
         vm.deck2 = 'SoundCloud';
         id = result.id;
         const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
         $('#soundcloudPlayer2').attr('src', url );
+        vm.titleB = result.title;
       }
     }
     // Set the base video volume
@@ -61,52 +75,110 @@ function TestCtrl($http, $window) {
   };
 
   vm.playDeck1 = () => {
-    if (vm.deck1 === 'Youtube') {
-      youtubePlayer1.playVideo();
+    if (vm.playA === false){
+
+      if (vm.deck1 === 'Youtube') {
+        youtubePlayer1.playVideo();
+      } else {
+        soundcloudPlayer1.play();
+      }
+      vm.playA = true;
     } else {
-      soundcloudPlayer1.play();
+      if (vm.deck1 === 'Youtube') {
+        youtubePlayer1.pauseVideo();
+      } else {
+        soundcloudPlayer1.pause();
+      }
+      vm.playA = false;
     }
   };
 
   vm.playDeck2 = () => {
-    if (vm.deck2 === 'Youtube') {
-      youtubePlayer2.playVideo();
+    if (vm.playB === false){
+
+      if (vm.deck2 === 'Youtube') {
+        youtubePlayer2.playVideo();
+      } else {
+        soundcloudPlayer2.play();
+      }
+      vm.playB = true;
     } else {
-      soundcloudPlayer2.play();
+      if (vm.deck2 === 'Youtube') {
+        youtubePlayer2.pauseVideo();
+      } else {
+        soundcloudPlayer2.pause();
+      }
+      vm.playA = false;
     }
   };
 
-  vm.pauseDeck1 = () => {
-    if (vm.deck1 === 'Youtube') {
-      youtubePlayer1.pauseVideo();
+  vm.setGainA = setGainA;
+  function setGainA(){
+    if(vm.crossfade > 50){
+      if (vm.deck1 === 'Youtube'){
+        youtubePlayer1.setVolume(vm.deck1Fade * (vm.gainA / 100));
+      }else{
+        soundcloudPlayer1.volume = (vm.deck1Fade * (vm.gainA / 100))/100;
+      }
     } else {
-      soundcloudPlayer1.pause();
+      if (vm.deck1 === 'Youtube') {
+        youtubePlayer1.setVolume(vm.gainA);
+      } else {
+        soundcloudPlayer1.volume = (vm.gainA/100);
+      }
     }
-  };
+  }
 
-  vm.pauseDeck2 = () => {
-    if (vm.deck2 === 'Youtube') {
-      youtubePlayer2.pauseVideo();
-    } else {
-      soundcloudPlayer2.pause();
+  vm.setGainB = setGainB;
+  function setGainB(){
+    if(vm.crossfade < 50){
+      if (vm.deck2 === 'Youtube') {
+        youtubePlayer2.setVolume(vm.deck2Fade * (vm.gainB / 100));
+      } else {
+        soundcloudPlayer2.volume = (vm.deck2Fade * (vm.gainB / 100))/100;
+      }
+    }else{
+      if (vm.deck2 === 'Youtube'){
+        youtubePlayer2.setVolume(vm.gainB);
+      }else{
+        soundcloudPlayer2.volume = (vm.gainB/100);
+      }
     }
-  };
+  }
+
 
   vm.fade = fade;
-
+  console.log(soundcloudPlayer1.volume);
   function fade() {
     vm.deck1Fade = 100 - (2 * (vm.crossfade - 50));
     vm.deck2Fade = 100 - (2 * (50 - vm.crossfade));
-    if (vm.deck1 === 'Youtube') {
-      youtubePlayer1.setVolume(vm.deck1Fade);
+    
+    if(vm.crossfade > 50){
+      if (vm.deck1 === 'Youtube') {
+        youtubePlayer1.setVolume(vm.deck1Fade * (vm.gainA / 100));
+      } else {
+        soundcloudPlayer1.volume = (vm.deck1Fade * (vm.gainA / 100))/100;
+      }
     } else {
-
+      if (vm.deck1 === 'Youtube') {
+        youtubePlayer1.setVolume(vm.gainA);
+      } else {
+        soundcloudPlayer1.volume = (vm.gainA/100);
+      }
     }
 
-    if (vm.deck1 === 'Youtube') {
-      youtubePlayer2.setVolume(vm.deck2Fade);
+    if(vm.crossfade < 50){
+      if (vm.deck2 === 'Youtube') {
+        youtubePlayer2.setVolume(vm.deck2Fade * (vm.gainB / 100));
+      } else {
+        soundcloudPlayer2.volume = (vm.deck2Fade * (vm.gainB / 100))/100;
+      }
     } else {
-
+      if (vm.deck2 === 'Youtube') {
+        youtubePlayer2.setVolume(vm.gainB);
+      } else {
+        soundcloudPlayer2.volume = (vm.gainB/100);
+      }
     }
   }
 

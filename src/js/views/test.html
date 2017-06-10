@@ -3,6 +3,7 @@
 
 <div id="console" class="tc pa2 pt5">
 	<div id="deck1" class="fl w-40">
+		<div id="waveform"></div>
 		<!-- <h1>Deck 1: {{ test.deck1 ? 'SoundCloud' : 'Youtube' }}</h1> -->
 		<div ng-show="test.deck1 === 'Youtube';" class="yt-wrap-deck1">
 			<div id="youtubePlayer1" class="yt-player"></div>
@@ -12,23 +13,39 @@
 		<img src="/images/cover1.png" class="coverA">
 		<div id="deckA-outer"></div>
 		<div id="deckA-ctrls">
-			<button id="playA" ng-click="test.playDeck1()">PLAY</button>
-			<button id="pauseA" ng-click="test.pauseDeck1()">PAUSE</button>
-			<button>Loop</button>
+			<button id="playA" ng-click="test.playDeck1()" onclick="test.wavesurfer.playPause()" class="display"><img id="playA-img" src="/../images/play-pause.png"></button>
+			<marquee direction="left" class="display track-info-displayA" width="300" ng-hide="test.titleA"> *** MIX THE CLOUD ***</marquee>
+			<marquee direction="left" class="display track-info-displayA" width="300">{{test.titleA}}</marquee>
 		</div>
+
 	</div>
 	
 	<div id="controls" class="fl w-20">
 		<div class="fl w-100 mv3 bg-grey">
 			<div id="deckA-gain-slider">
-				<input type="range" orient="vertical" min="0" max="10" step="1" id="deckA-gain-input">
+				<div class="display display-gainA tc ph2">
+        			<strong class="b">{{ test.gainA }}</strong>
+        		</div>
+				<input ng-init="test.gainA" type="range" orient="vertical" min="0" max="100" step="1" id="deckA-gain-input" ng-change="test.setGainA()" ng-model="test.gainA">
+				
 			</div>
 			<div id="deckB-gain-slider">
-				<input type="range" orient="vertical" min="0" max="10" step="1" id="deckB-gain-input">
+				<div class="display display-gainB tc ph2">
+        			<strong class="b">{{ test.gainB }}</strong>
+        		</div>
+				<input ng-init="test.gainB" type="range" orient="vertical" min="0" max="100" step="1" id="deckB-gain-input" ng-change="test.setGainB()" ng-model="test.gainB">
 			</div>
+
+			<div class="display">
+				
+
+			</div>
+			
 			<div id="crossfade-range">
-        		<h5>Crossfader {{ test.crossfade }}</h5>
         		<input ng-init="test.crossfade" ng-change="test.fade()" type="range" min="0" max="100" step="1" id="crossfade" ng-model="test.crossfade"/>
+        		<div class="">
+        			<p class="gray ma0 tl">Crossfader</p>
+        		</div>
         	</div>
         </div>
 	</div>
@@ -40,13 +57,14 @@
 			<div id="youtubePlayer2" class="yt-player"></div>
 		</div>
 		<audio controls="" id="soundcloudPlayer2" class="dn" src="" ng-show="test.deck2 === 'SoundCloud';"></audio>
-		<div id="tt2" ng-show="test.deck1 === 'SoundCloud';"></div>
+		<div id="tt2" ng-show="test.deck2 === 'SoundCloud';"></div>
 		<div id="deckB-outer"></div>
 		<div id="deckB-ctrls">
-			<button id="playB" ng-click="test.playDeck2()">PLAY</button>
-			<button id="pauseB" ng-click="test.pauseDeck2()">PAUSE</button>
-			<button>Loop</button>
+			<button id="playB" ng-click="test.playDeck2()" onclick="" class="display"><img id="playB-img" src="/../images/play-pause.png"></button>
+			<marquee direction="left" class="display track-info-displayB" width="300" ng-hide="test.titleB"> *** MIX THE CLOUD ***</marquee>
+			<marquee direction="left" class="display track-info-displayB" width="300">{{test.titleB}}</marquee>
 		</div>
+
 	</div>
 	
 </div>
@@ -59,19 +77,22 @@
   <input type="submit">
 </form>
 
-<ul class="list result pa0">
-  <li ng-repeat="result in test.results track by $index" class="list white">
-  	<div ng-if="result.title" class="search-results"><div class="fl w-80">{{result.title}}</div>
-  	<div class="fr fl w-20">
-  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn">A</button>
-  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn">B</button>
-  	</div>
-  	</div>
-  	<div ng-if="!result.title" class="search-results">{{result.snippet.title}}
-  	<div class="fr">
-  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn">A</button>
-  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn">B</button>
-  	</div>
-  	</div>
-  </li>
-</ul>
+<div style="height: 400px; width: 700px; overflow: auto;" class="m-auto">
+	<ul class="list result pa0">
+	  <li ng-repeat="result in test.results track by $index" class="list white">
+	  	<div ng-if="result.title" class="search-results"><div class="fl w-80">	
+	  	<marquee direction="left" width="400">{{result.title | limitTo: 40}}...</marquee></div>
+	  	<div class="fl w-20">
+	  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" ng-model="	test.currentA">A</button>
+	  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display" ng-model="	test.currentB">B</button>
+	  	</div>
+	  	</div>
+	  	<div ng-if="!result.title" class="search-results">{{result.snippet.title}}
+	  	<div class="fl w-20">
+	  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" >A</button>
+	  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display">B</button>
+	  	</div>
+	  	</div>
+	  </li>
+	</ul>
+</div>

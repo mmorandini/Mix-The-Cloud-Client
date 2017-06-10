@@ -1,11 +1,5 @@
-@-webkit-keyframes spin {
-	0%  {-webkit-transform: rotate(0deg);}
-	100% {-webkit-transform: rotate(360deg);}	
-}
-
-
 #console{
-	height: 70vh;
+	height: 90vh;
 	background-image: url('/images/3d-skin.jpg');
 	background-size: cover;
 	background-position: center;
@@ -16,10 +10,27 @@
     border-bottom-left-radius: 45px;
     border-bottom-right-radius: 45px;
     box-shadow: 10px 10px 5px white;
-
+    }
+#deck1{
+	position: absolute;
+    top: 150px;
+    left: 5px;
+}
+#deck2{
+	position: absolute;
+    top: 150px;
+    right: 5px;
+}
+#waveform{
+	width: 386px;
+  	background: rgba(grey, 0.5);
+    position: absolute;
+    top: 89px;
+    right: 83px;
+    
+    border-radius: 5px;
 }
 #tt1, #tt2{
-
 	background-image: url('/images/neon-turntable.gif');
 	background-size: cover;
 	background-position: center;
@@ -38,14 +49,14 @@
 }
 .coverA{
 	position: absolute;
-    top: 234px;
-    left: 101px;
+    top: 237px;
+    left: 103px;
     z-index: 1;
 }
 .coverB{
 	position: absolute;
-    top: 244px;
-    right: 108px;
+    top: 242px;
+    right: 110px;
     z-index: 1;
 }
 #deckA-outer{
@@ -75,6 +86,7 @@ result{
     left: 200px;
     top: 325px;
 }
+
 #youtubePlayer2{
 	position: absolute;
     right: 200px;
@@ -83,7 +95,7 @@ result{
 
 
 #deckA-ctrls{
-	background: black;
+	
 	position: absolute;
     top: 593px;
     left: 203px;
@@ -92,12 +104,26 @@ result{
 }
 
 #deckB-ctrls{
-	background: black;
 	position: absolute;
     top: 593px;
     right: 203px;
     width: 200px;
     z-index: 1;
+}
+#playA, #playB{
+	padding: 0;
+	width: 80px;
+	height: 60px;
+	&:hover{
+	background-color: #c8f0fa;
+	}
+	#playA-img{
+	background-image: url('/images/play-pause.png');
+	background-size: cover;
+	background-position: center;
+	width: 80px;
+	height: 60px;
+}
 }
 
 #controls{
@@ -151,18 +177,55 @@ input::-moz-focus-inner {
 
 #crossfade-range{
 	position: absolute;
-    top: 310px;
+    top: 500px;
     left: 11px;
 }
 
 #crossfade{
 	width: 260px;
+}
+.display{
+	background: rgba(grey, 0.3);
+	color: $lightBlue;
+	text-shadow: 0 0 0.3em $lightBlue;
+	box-shadow: 0 0em 0.4em $lightBlue;
+	text-align: right;
+	position: relative;
+	z-index: 2;
+	strong{
+	font-family: 'Codystar', cursive;
+	font-size: 15px;
+	}
+}
+.display-gainA{
 
+	width: 35px;
+	position: absolute;
+	top: -30px;
+    right: 47px;
+}
+
+.display-gainB{
+
+	width: 35px;
+	position: absolute;
+	top: -30px;
+    left: 47px;
+}
+.track-info-displayA{
+	position: absolute;
+	top: -355px;
+	right: -45px;
+}
+.track-info-displayB{
+	position: absolute;
+	top: -355px;
+	right: -55px;
 }
 .yt-wrap-deck1{
 	position: absolute;
     left: -52px;
-    top: -35px;
+    top: -47px;
     -webkit-animation: spin 4s infinite linear;
 }
 .yt-wrap-deck2{
@@ -174,11 +237,15 @@ input::-moz-focus-inner {
 
 .search-results{
 	margin: 2px auto;
-	background: grey;
+	color: $lightBlue;
+	font-size: 15px;
+	background: rgba(grey, 0.3);
+	text-shadow: 0 0 0.3em $lightBlue;
+	box-shadow: 0 0em 0.8em white;
 	padding: 20px;
-    width: 50%;
+    
     height: 70px;
-    border: 2px solid #f6f6f6;
+    border: 1px solid #f6f6f6;
 }
 .yt-player{
 	border-radius: 90px;
