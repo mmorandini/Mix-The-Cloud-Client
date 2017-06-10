@@ -17,12 +17,7 @@ function TestCtrl($http, $window) {
   vm.titleB = '';
   vm.playA = false;
   vm.playB = false;
-  // vm.wavesurfer = WaveSurfer.create({
-  //   container: '#waveform',
-  //   waveColor: 'violet',
-  //   progressColor: 'purple'
-  // });
-
+  
   /*
 
     UI
@@ -61,7 +56,6 @@ function TestCtrl($http, $window) {
         const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
         $('#soundcloudPlayer1').attr('src', url );
         vm.titleA = result.title;
-        vm.wavesurfer.load(url);
       } else {
         vm.deck2 = 'SoundCloud';
         id = result.id;
@@ -81,6 +75,7 @@ function TestCtrl($http, $window) {
         youtubePlayer1.playVideo();
       } else {
         soundcloudPlayer1.play();
+        vm.startWaveform(soundcloudPlayer1);
       }
       vm.playA = true;
     } else {
@@ -108,9 +103,32 @@ function TestCtrl($http, $window) {
       } else {
         soundcloudPlayer2.pause();
       }
-      vm.playA = false;
+      vm.playB = false;
     }
   };
+
+  /*
+
+  WAVEFORM
+
+  */
+
+  vm.startWaveform = (track) => {
+    SC.get("/tracks/293", function(track){
+      var waveform = new Waveform({
+        container: document.getElementById("waveform"),
+        innerColor: "#333"
+      });
+  
+      waveform.dataFromSoundCloudTrack(track);
+      var streamOptions = waveform.optionsForSyncedStream();
+    });
+  };
+  /*
+  
+  AUDIO/VIDEO MANIPULATION
+    
+  */
 
   vm.setGainA = setGainA;
   function setGainA(){
@@ -182,44 +200,6 @@ function TestCtrl($http, $window) {
     }
   }
 
-
-  /*
-  
-  AUDIO/VIDEO MANIPULATION
-    
-  */
-
-  // let context   = new AudioContext();
-
-  // // let soundcloudPlayer1 = new Audio();
-
-
-  // let gainNodeA = context.createGain();
-  // let gainNodeB = context.createGain();
-  
-  // let sourceA   = context.createMediaElementSource(soundcloudPlayer1);
-  // let sourceB   = context.createMediaElementSource(soundcloudPlayer2);
-
-  // sourceA.connect(gainNodeA);
-  // sourceB.connect(gainNodeB);
-
-  // $('#playA').on('click', function(){
-  //     sourceA.mediaElement.play();
-  //   });
-  // $('#pauseA').on('click', function(){
-  //     sourceA.mediaElement.pause();
-  //   });
-
-  // $('#playB').on('click', function(){
-  //     sourceB.mediaElement.play();
-  //   });
-  // $('#pauseB').on('click', function(){
-  //     sourceB.mediaElement.pause();
-  //   });
-
-
-
-  
   /*
 
     UTILITIES
@@ -270,10 +250,7 @@ function TestCtrl($http, $window) {
     
   */
 
-  // const formattedTime = youtubeTimeToSec('PT1H40M50S');
-  // console.log(formattedTime);
-
-  // console.log(formatDuration(formattedTime))
+  
 
   function youtubeTimeToSec(input){
     const reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
@@ -321,11 +298,6 @@ function TestCtrl($http, $window) {
       width: '300',
       videoId: '',
       
-      // events: {
-      // 'autoplay': false
-      //   'onReady': onPlayerReady,
-      //   'onStateChange': onPlayerStateChange
-      // }
     });
 
     youtubePlayer2 = new YT.Player('youtubePlayer2', {
@@ -333,45 +305,12 @@ function TestCtrl($http, $window) {
       width: '300',
       videoId: '',
 
-      
-      // events: {
-      //   'autoplay': false
-      //   'onReady': onPlayerReady,
-      //   'onStateChange': onPlayerStateChange
-      // }
     });
   }
 
   $window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
-  // // 4. The API will call this function when the video player is ready.
-  // function onPlayerReady(event) {
-  //   event.target.playVideo();
-  // }
-
-  // $window.onPlayerReady = onPlayerReady;
-
-  // // 5. The API calls this function when the player's state changes.
-  // //    The function indicates that when playing a video (state=1),
-  // //    the player should play for six seconds and then stop.
-  // var done = false;
-  // function onPlayerStateChange(event) {
-  //   if (event.data == YT.PlayerState.PLAYING && !done) {
-  //     setTimeout(stopVideo, 6000);
-  //     done = true;
-  //   }
-  // }
   
-  // $window.onPlayerStateChange = onPlayerStateChange;
-
-  // function stopVideo() {
-  //   player.stopVideo();
-  // }
-
-  // $window.stopVideo = stopVideo;
-
-  // searchYoutube('Bonobo');
-
 
   function searchYoutube(query) {
     const maxResults = 20;
@@ -381,8 +320,8 @@ function TestCtrl($http, $window) {
     $http
     .get(url)
     .then(response => {
-      console.log(response);
       vm.results = response.data.items;
+      console.log('searchYoutube says: ', vm.results);
     }, err => {
       console.error(err);
     });
@@ -405,12 +344,6 @@ function TestCtrl($http, $window) {
     });
   }
 
-  // - https://developers.google.com/youtube/iframe_api_reference
-  // player.loadVideoById({'videoId': 'bHQqvYy5KYo',
-  //              'startSeconds': 5,
-  //              'endSeconds': 60,
-  //              'suggestedQuality': 'large'})
-  // player.setVolume(volume:Number) (0 and 100)
 
   /*
 

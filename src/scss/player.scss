@@ -1,3 +1,10 @@
+/*
+
+	*** GENERAL ***
+
+*/
+
+
 #console{
 	height: 90vh;
 	background-image: url('/images/3d-skin.jpg');
@@ -11,6 +18,13 @@
     border-bottom-right-radius: 45px;
     box-shadow: 10px 10px 5px white;
     }
+
+
+/*
+
+	*** DECKS ***
+
+*/
 #deck1{
 	position: absolute;
     top: 150px;
@@ -21,83 +35,10 @@
     top: 150px;
     right: 5px;
 }
-#waveform{
-	width: 386px;
-  	background: rgba(grey, 0.5);
-    position: absolute;
-    top: 89px;
-    right: 83px;
-    
-    border-radius: 5px;
-}
-#tt1, #tt2{
-	background-image: url('/images/neon-turntable.gif');
-	background-size: cover;
-	background-position: center;
-	width: 400px;
-	height: 400px;
-	position: absolute;
-}
-#tt1{
-	
-	left: 127px;
-    top: 233px;
-}
-#tt2{
-	right: 65px;
-    top: 233px;
-}
-.coverA{
-	position: absolute;
-    top: 237px;
-    left: 103px;
-    z-index: 1;
-}
-.coverB{
-	position: absolute;
-    top: 242px;
-    right: 110px;
-    z-index: 1;
-}
-#deckA-outer{
-	width: 310px;
-    height: 310px;
-    border: 10px solid white;
-    border-radius: 180px;
-    position: absolute;
-    left: 143px;
-    top: 272px;
-}
-#deckB-outer{
-	width: 310px;
-    height: 310px;
-    border: 10px solid white;
-    border-radius: 180px;
-    position: absolute;
-    right: 143px;
-    top: 272px;
-}
-result{
-	margin: 0 auto;
-	margin-top: 15px;
-}
-#youtubePlayer1{
-	position: absolute;
-    left: 200px;
-    top: 325px;
-}
-
-#youtubePlayer2{
-	position: absolute;
-    right: 200px;
-    top: 325px;
-}
-
 
 #deckA-ctrls{
-	
 	position: absolute;
-    top: 593px;
+    top: 600px;
     left: 203px;
     width: 200px;
     z-index: 1
@@ -105,7 +46,7 @@ result{
 
 #deckB-ctrls{
 	position: absolute;
-    top: 593px;
+    top: 600px;
     right: 203px;
     width: 200px;
     z-index: 1;
@@ -123,8 +64,126 @@ result{
 	background-position: center;
 	width: 80px;
 	height: 60px;
+	}
 }
+
+#waveform{
+	width: 386px;
+  	background: rgba(grey, 0.2);
+    position: absolute;
+    top: 89px;
+    right: 83px;
+    border-radius: 5px;
 }
+
+.trackA-info{
+	position: absolute;
+	top: 220px;
+	right: 125px;
+}
+
+.trackB-info{
+	position: absolute;
+	top: 220px;
+	left: 125px;
+} 
+
+/*
+
+	*** DECKS COVERS ***
+
+*/
+
+#tt1, #tt2{
+	background-image: url('/images/neon-turntable.gif');
+	background-size: cover;
+	background-position: center;
+	width: 400px;
+	height: 400px;
+	position: absolute;
+}
+
+#tt1{
+	
+	left: 127px;
+    top: 233px;
+}
+
+#tt2{
+	right: 65px;
+    top: 233px;
+}
+
+.coverA{
+	position: absolute;
+    top: 237px;
+    left: 103px;
+    z-index: 1;
+}
+
+.coverB{
+	position: absolute;
+    top: 242px;
+    right: 110px;
+    z-index: 1;
+}
+
+#deckA-outer{
+	width: 310px;
+    height: 310px;
+    border: 10px solid white;
+    border-radius: 180px;
+    position: absolute;
+    left: 143px;
+    top: 272px;
+}
+
+#deckB-outer{
+	width: 310px;
+    height: 310px;
+    border: 10px solid white;
+    border-radius: 180px;
+    position: absolute;
+    right: 143px;
+    top: 272px;
+}
+
+/*
+
+	*** YOUTUBE PLAYERS ***
+
+*/
+ 
+#youtubePlayer1{
+	position: absolute;
+    left: 200px;
+    top: 325px;
+}
+
+#youtubePlayer2{
+	position: absolute;
+    right: 200px;
+    top: 325px;
+}
+
+.yt-wrap-deck1{
+	position: absolute;
+    left: -52px;
+    top: -47px;
+    -webkit-animation: spin 4s infinite linear;
+}
+.yt-wrap-deck2{
+	position: absolute;
+    right: -52px;
+    top: -47px;
+    -webkit-animation: spin 4s infinite linear;
+}
+
+/*
+
+	*** MIXER CONSOLE ***
+
+*/
 
 #controls{
 	position: absolute;
@@ -140,7 +199,7 @@ result{
 
 #deckA-gain-slider,  #deckB-gain-slider{
 
-  // Slider
+	// Slider
   #deckA-gain-input, #deckB-gain-input {
     -webkit-appearance: none;
     height: 200px;
@@ -150,9 +209,17 @@ result{
     writing-mode: bt-lr; /* IE */
     -webkit-appearance: slider-vertical; /* WebKit */
    }
-
    position: absolute;
+}
 
+#deckA-gain-slider{
+	left: 0;
+    bottom: 0;
+}
+
+#deckB-gain-slider{
+	top: 255px;
+    right: 0;
 }
 
 // Firefox Overrides
@@ -165,76 +232,28 @@ input::-moz-focus-inner {
   border: 0; 
 }
 
-#deckA-gain-slider{
-	top: 80px;
-	left: -120px;
-}
-
-#deckB-gain-slider{
-	top: 80px;
-	right: -120px;
-}
-
 #crossfade-range{
 	position: absolute;
-    top: 500px;
-    left: 11px;
+    bottom: -100px;
+    left: 30px;
 }
 
 #crossfade{
-	width: 260px;
-}
-.display{
-	background: rgba(grey, 0.3);
-	color: $lightBlue;
-	text-shadow: 0 0 0.3em $lightBlue;
-	box-shadow: 0 0em 0.4em $lightBlue;
-	text-align: right;
-	position: relative;
-	z-index: 2;
-	strong{
-	font-family: 'Codystar', cursive;
-	font-size: 15px;
-	}
-}
-.display-gainA{
-
-	width: 35px;
-	position: absolute;
-	top: -30px;
-    right: 47px;
+	width: 230px;
 }
 
-.display-gainB{
 
-	width: 35px;
-	position: absolute;
-	top: -30px;
-    left: 47px;
-}
-.track-info-displayA{
-	position: absolute;
-	top: -355px;
-	right: -45px;
-}
-.track-info-displayB{
-	position: absolute;
-	top: -355px;
-	right: -55px;
-}
-.yt-wrap-deck1{
-	position: absolute;
-    left: -52px;
-    top: -47px;
-    -webkit-animation: spin 4s infinite linear;
-}
-.yt-wrap-deck2{
-	position: absolute;
-    right: -52px;
-    top: -47px;
-    -webkit-animation: spin 4s infinite linear;
-}
 
+/*
+
+	*** SEARCH ***
+
+*/
+
+result{
+	margin: 0 auto;
+	margin-top: 15px;
+}
 .search-results{
 	margin: 2px auto;
 	color: $lightBlue;
@@ -252,7 +271,6 @@ input::-moz-focus-inner {
 }
 
 .load-btn{
-	
-    top:50%;
+	top:50%;
     left:50%;
  }

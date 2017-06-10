@@ -18,7 +18,40 @@ body{
  }
 
 
-button:hover{
-	text-shadow: 0.2em 0.2em 0.2em 0.5em $lightBlue;
-	box-shadow: 0.1em 0.1em 0.1em 0.1em $lightBlue;
+button{
+	&:hover{
+		text-shadow: 0.2em 0.2em 0.2em 0.5em $lightBlue;
+		}
+	&:focus{
+		outline: 0;
+	}
+}
+
+.display{
+	background: rgba(grey, 0.3);
+	color: $lightBlue;
+	text-shadow: 0 0 0.3em $lightBlue;
+	box-shadow: 0 0em 0.4em $lightBlue;
+	text-align: right;
+	position: relative;
+	z-index: 2;
+	strong{
+	font-family: 'Codystar', cursive;
+	font-size: 15px;
+	}
+}
+.display-gainA{
+
+	width: 35px;
+	position: absolute;
+	bottom: -20px;
+    right: 47px;
+}
+
+.display-gainB{
+
+	width: 35px;
+	position: absolute;
+	bottom: -20px;
+    left: 47px;
 }

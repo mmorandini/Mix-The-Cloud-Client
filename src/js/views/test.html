@@ -1,9 +1,15 @@
 <h1>Mixer... Youtube and Soundcloud...</h1>
 
 
+<div id="waveform"></div>
+
 <div id="console" class="tc pa2 pt5">
 	<div id="deck1" class="fl w-40">
 		<div id="waveform"></div>
+		<div class="trackA-info">
+			<marquee direction="left" class="display" width="300" height="30" ng-hide="test.titleA"> *** MIX THE CLOUD ***</marquee>
+			<marquee direction="left" class="display" width="300" height="30" ng-show="test.titleA">{{test.titleA}}</marquee>
+		</div>
 		<!-- <h1>Deck 1: {{ test.deck1 ? 'SoundCloud' : 'Youtube' }}</h1> -->
 		<div ng-show="test.deck1 === 'Youtube';" class="yt-wrap-deck1">
 			<div id="youtubePlayer1" class="yt-player"></div>
@@ -13,9 +19,8 @@
 		<img src="/images/cover1.png" class="coverA">
 		<div id="deckA-outer"></div>
 		<div id="deckA-ctrls">
-			<button id="playA" ng-click="test.playDeck1()" onclick="test.wavesurfer.playPause()" class="display"><img id="playA-img" src="/../images/play-pause.png"></button>
-			<marquee direction="left" class="display track-info-displayA" width="300" ng-hide="test.titleA"> *** MIX THE CLOUD ***</marquee>
-			<marquee direction="left" class="display track-info-displayA" width="300">{{test.titleA}}</marquee>
+			<button id="playA" ng-click="test.playDeck1()" class="display"><img id="playA-img" src="/../images/play-pause.png"></button>
+			
 		</div>
 
 	</div>
@@ -52,6 +57,10 @@
 	
 	<div id="deck2" class="fl w-40">
 		<!-- <h1>Deck 1: {{ test.deck2 ? 'SoundCloud' : 'Youtube' }}</h1> -->
+		<div class="trackB-info">
+			<marquee direction="left" class="display pa1" width="300" height="30" ng-hide="test.titleB"> *** MIX THE CLOUD ***</marquee>
+			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleB">{{test.titleB}}</marquee>
+		</div>
 		<img src="/images/cover.png" class="coverB">
 		<div ng-show="test.deck2 === 'Youtube';" class="yt-wrap-deck2">
 			<div id="youtubePlayer2" class="yt-player"></div>
@@ -61,8 +70,7 @@
 		<div id="deckB-outer"></div>
 		<div id="deckB-ctrls">
 			<button id="playB" ng-click="test.playDeck2()" onclick="" class="display"><img id="playB-img" src="/../images/play-pause.png"></button>
-			<marquee direction="left" class="display track-info-displayB" width="300" ng-hide="test.titleB"> *** MIX THE CLOUD ***</marquee>
-			<marquee direction="left" class="display track-info-displayB" width="300">{{test.titleB}}</marquee>
+			
 		</div>
 
 	</div>
@@ -78,8 +86,8 @@
 </form>
 
 <div style="height: 400px; width: 700px; overflow: auto;" class="m-auto">
-	<ul class="list result pa0">
-	  <li ng-repeat="result in test.results track by $index" class="list white">
+	<ul class="">
+	  <li ng-repeat="result in test.results track by $index" class="">
 	  	<div ng-if="result.title" class="search-results"><div class="fl w-80">	
 	  	<marquee direction="left" width="400">{{result.title | limitTo: 40}}...</marquee></div>
 	  	<div class="fl w-20">
