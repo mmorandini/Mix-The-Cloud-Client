@@ -81,25 +81,28 @@
 <h2>SEARCH</h2>
 <form ng-submit="test.search()">
   <input ng-model="test.query">
-  <select ng-model="test.searchType" ng-options="type as type for type in test.searchTypes"></select>
+  <select ng-model="test.searchType" ng-options="type as type for type in test.searchTypes">
+  </select>
   <input type="submit">
 </form>
 
 <div style="height: 400px; width: 700px; overflow: auto;" class="m-auto">
 	<ul class="">
 	  <li ng-repeat="result in test.results track by $index" class="">
-	  	<div ng-if="result.title" class="search-results"><div class="fl w-80">	
-	  	<marquee direction="left" width="400">{{result.title | limitTo: 40}}...</marquee></div>
-	  	<div class="fl w-20">
-	  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" ng-model="	test.currentA">A</button>
-	  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display" ng-model="	test.currentB">B</button>
-	  	</div>
+	  	<div ng-if="result.title" class="search-results">
+	  		<div class="">	
+	  			<marquee direction="left" width="400">{{result.title | limitTo: 40}}...</marquee>
+	  		</div>
+	  		<div class="fl w-20">
+	  			<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" ng-model="test.currentA">A</button>
+	  			<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display" ng-model="test.currentB">B</button>
+	  		</div>
 	  	</div>
 	  	<div ng-if="!result.title" class="search-results">{{result.snippet.title}}
-	  	<div class="fl w-20">
-	  	<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" >A</button>
-	  	<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display">B</button>
-	  	</div>
+	  		<div class="fl w-20">
+	  			<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" >A</button>
+	  			<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display">B</button>
+	  		</div>
 	  	</div>
 	  </li>
 	</ul>
