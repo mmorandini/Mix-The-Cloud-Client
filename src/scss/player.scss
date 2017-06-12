@@ -170,6 +170,9 @@
     top: -47px;
     -webkit-animation: spin 4s infinite linear;
 }
+.yt-player{
+	border-radius: 90px;
+}
 
 /*
 
@@ -235,11 +238,5 @@ result{
     height: 70px;
     border: 1px solid #f6f6f6;
 }
-.yt-player{
-	border-radius: 90px;
-}
 
-.load-btn{
-	top:50%;
-    left:50%;
- }
+

@@ -6,7 +6,7 @@
 <div id="console" class="tc pa2 pt5">
 	<div id="deck1" class="fl w-40">
 		<div class="trackA-info">
-			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleA">  ♫ ♪ Mix the cloud&#169 ♪ ♫</marquee>
+			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleA">  ♫ ♪ Mix the cloud ♪ ♫</marquee>
 			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleA">{{test.titleA}}</marquee>
 		</div>
 		<!-- <h1>Deck 1: {{ test.deck1 ? 'SoundCloud' : 'Youtube' }}</h1> -->
@@ -56,7 +56,7 @@
 	<div id="deck2" class="fl w-40">
 		<!-- <h1>Deck 1: {{ test.deck2 ? 'SoundCloud' : 'Youtube' }}</h1> -->
 		<div class="trackB-info">
-			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleB">  ♫ ♪ Mix the cloud&#169 ♪ ♫ </marquee>
+			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleB">  ♫ ♪ Mix the cloud ♪ ♫ </marquee>
 			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleB">{{test.titleB}}</marquee>
 		</div>
 		<img src="/images/cover.png" class="coverB">
@@ -89,25 +89,25 @@
 
 
 
-<div style="height: 400px; width: 700px; overflow: auto;" class="m-auto">
+<div style="height: 400px; width: 600px; overflow: auto;" class="m-auto">
 	<ul class="">
 	  <li ng-repeat="result in test.results track by $index" class="">
-	  	<div ng-if="result.title" class="search-results">
-	  		<div class="result-title fl w-80">	
-	  			<marquee direction="left" width="350">{{result.title}}</marquee>
+	  	<div ng-if="result.title" class="search-results relative">
+	  		<div class="result-title fl w-70 pa2">	
+	  			<marquee direction="left" width="300">{{result.title}}</marquee>
 	  		</div>
-	  		<div class="fl w-20">
-	  			<button ng-click="test.loadToDeck(1, result)" class="load-btn display" ng-model="test.currentA">A</button>
-	  			<button ng-click="test.loadToDeck(2, result)" class="load-btn display" ng-model="test.currentB">B</button>
+	  		<div class="fl w-30">
+	  			<button ng-click="test.loadToDeck(1, result)" class="display pa2" ng-model="test.currentA">A</button>
+	  			<button ng-click="test.loadToDeck(2, result)" class="display pa2" ng-model="test.currentB">B</button>
 	  		</div>
 	  	</div>
-	  	<div ng-if="!result.title" class="search-results">
-	  		<div class="result-title fl w-80">
-	  			<marquee direction="left" width="350">{{result.snippet.title}}</marquee>
+	  	<div ng-if="!result.title" class="search-results relative">
+	  		<div class="result-title fl w-70 pa2">
+	  			<marquee direction="left" width="300">{{result.snippet.title}}</marquee>
 	  		</div>
-	  		<div class="fl w-20">
-	  			<button ng-click="test.loadToDeck(1, result)" class="load-button display" ng-model="test.currentA">A</button>
-	  			<button ng-click="test.loadToDeck(2, result)" class="load-button display" ng-model="test.currentB">B</button>
+	  		<div class="fl w-30">
+	  			<button ng-click="test.loadToDeck(1, result)" class="display pa2" ng-model="test.currentA">A</button>
+	  			<button ng-click="test.loadToDeck(2, result)" class="display pa2" ng-model="test.currentB">B</button>
 	  		</div>
 	  	</div>
 	  </li>
