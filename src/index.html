@@ -4,7 +4,7 @@
   <base href="/">
   <meta charset="utf-8">
   <title>Mix the cloud</title>
-  <link rel="stylesheet" href="animate.min.css">
+  
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
 
   <!-- inject:js -->
@@ -12,7 +12,7 @@
   <!-- inject:css -->
   <!-- endinject -->
   <link href="https://fonts.googleapis.com/css?family=Codystar|Righteous" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
@@ -20,18 +20,16 @@
   <!-- <script src="path/to/angular-animate.js"></script> -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <header>
+  <header ng-if="main.showHeader">
     <nav class="pa3 pa4-ns">
       <a href="/"><img class="navbar-logo nav-link" src="/images/white-logo.png" alt=""></a>
       <a ui-sref="login" ng-show="!main.user" class="link dim gray    f6 f5-ns dib mr3 fr">Login</a>
       <a ui-sref="register" ng-show="!main.user" class="link dim gray    f6 f5-ns dib mr3 fr">Register</a>
       <a ng-click="main.logout()" ng-show="main.user" class="link dim gray    f6 f5-ns dib mr3 fr">Logout</a>
     </nav>
-
   </header>
   <main ui-view>
 
   </main>
-
 </body>
 </html>

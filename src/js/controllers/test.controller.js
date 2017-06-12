@@ -2,9 +2,11 @@ angular
   .module('mtcApp')
   .controller('TestCtrl', TestCtrl);
 
-TestCtrl.$inject = ['$http', '$window', '$location'];
-function TestCtrl($http, $window, $location) {
+TestCtrl.$inject = ['$http', '$window', '$location', '$rootScope'];
+function TestCtrl($http, $window, $location, $rootScope) {
   const vm = this;
+
+  $rootScope.$broadcast('showHeader');
   
   vm.deck1 = 'SoundCloud';
   vm.deck2 = 'SoundCloud';

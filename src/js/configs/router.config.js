@@ -24,7 +24,8 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
   })
   .state('home', {
     url: '/',
-    templateUrl: '/js/views/home.html'
+    templateUrl: '/js/views/home.html',
+    controller: 'HomeCtrl as home'
   })
   .state('login', {
     url: '/login',
