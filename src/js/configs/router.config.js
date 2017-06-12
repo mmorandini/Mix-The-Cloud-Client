@@ -2,7 +2,7 @@ angular
 .module('mtcApp')
 .config(Router);
 
-Router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+Router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', ];
 function Router($stateProvider, $urlRouterProvider, $locationProvider){
   $locationProvider.html5Mode(true);
 
@@ -22,10 +22,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
     templateUrl: '/js/views/users/edit.html',
     controller: 'UsersEditCtrl as usersEdit'
   })
-  // .state('home', {
-  //   url: '/',
-  //   templateUrl: '/js/views/home.html'
-  // })
+  .state('home', {
+    url: '/',
+    templateUrl: '/js/views/home.html'
+  })
   .state('login', {
     url: '/login',
     templateUrl: '/js/views/login.html',
@@ -37,7 +37,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
     controller: 'RegisterCtrl as register'
   })
   .state('test', {
-    url: '/',
+    url: '/mixer',
     templateUrl: '/js/views/test.html',
     controller: 'TestCtrl as test'
   });

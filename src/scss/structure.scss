@@ -7,11 +7,17 @@ body{
 	
 	main{
 		text-align: center;
+		ul{
+		list-style-type: none;
+		}
 	}
 }
 
+.home-img{
+	max-height: 200px;
+}
 .navbar-logo{
-  width: 200px;
+  width: 300px;
 }
 .m-auto{
  	margin: 0 auto;
@@ -35,23 +41,12 @@ button{
 	text-align: right;
 	position: relative;
 	z-index: 2;
+	
 	strong{
 	font-family: 'Codystar', cursive;
-	font-size: 15px;
+	font-size: 20px;
 	}
-}
-.display-gainA{
-
-	width: 35px;
-	position: absolute;
-	bottom: -20px;
-    right: 47px;
-}
-
-.display-gainB{
-
-	width: 35px;
-	position: absolute;
-	bottom: -20px;
-    left: 47px;
+	&:focus{
+		outline: 0;
+	}
 }

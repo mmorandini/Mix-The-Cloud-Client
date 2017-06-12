@@ -6,7 +6,7 @@
 
 
 #console{
-	height: 90vh;
+	height: 80vh;
 	background-image: url('/images/3d-skin.jpg');
 	background-size: cover;
 	background-position: center;
@@ -27,12 +27,12 @@
 */
 #deck1{
 	position: absolute;
-    top: 150px;
+    top: 50px;
     left: 5px;
 }
 #deck2{
 	position: absolute;
-    top: 150px;
+    top: 50px;
     right: 5px;
 }
 
@@ -51,6 +51,7 @@
     width: 200px;
     z-index: 1;
 }
+
 #playA, #playB{
 	padding: 0;
 	width: 80px;
@@ -65,15 +66,6 @@
 	width: 80px;
 	height: 60px;
 	}
-}
-
-#waveform{
-	width: 386px;
-  	background: rgba(grey, 0.2);
-    position: absolute;
-    top: 89px;
-    right: 83px;
-    border-radius: 5px;
 }
 
 .trackA-info{
@@ -191,36 +183,13 @@
 	border-right: 1px solid grey;
 	height: 55vh;
     left: 40%;
-    top: 8%;
+    top: 180px;
     h5{
     color: white;
     }
 }
 
-#deckA-gain-slider,  #deckB-gain-slider{
 
-	// Slider
-  #deckA-gain-input, #deckB-gain-input {
-    -webkit-appearance: none;
-    height: 200px;
-    border-radius: 5px;
-    background: #ccc;
-    outline: none;
-    writing-mode: bt-lr; /* IE */
-    -webkit-appearance: slider-vertical; /* WebKit */
-   }
-   position: absolute;
-}
-
-#deckA-gain-slider{
-	left: 0;
-    bottom: 0;
-}
-
-#deckB-gain-slider{
-	top: 255px;
-    right: 0;
-}
 
 // Firefox Overrides
 ::-moz-range-track {

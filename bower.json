@@ -22,6 +22,7 @@
     "angular-animate": "^1.6.4",
     "angular-messages": "^1.6.4",
     "ng-marviluz": "ng-material#^0.0.4",
-    "angular-soundmanager2": "*"
+    "angular-soundmanager2": "*",
+    "animate.css": "^3.5.2"
   }
 }

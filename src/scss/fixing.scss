@@ -1,0 +1,40 @@
+#decks-gain{
+	position: relative;
+	width: 100%;
+}
+
+#deckA-gain-slider,  #deckB-gain-slider{
+		
+  #deckA-gain-input, #deckB-gain-input {
+    -webkit-appearance: none;
+    height: 150px;
+    background: #ccc;
+    outline: none;
+    position: absolute;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+   }
+ }
+#deckA-gain-input{
+	position: absolute;
+ 	top: 250px;
+ 	left: 30px;
+ }
+ #deckB-gain-input{
+	position: absolute;
+ 	top: 250px;
+ 	right: 30px;
+ }
+ .display-gainA{
+ 	width: 35px;
+	position: absolute;
+	top: 400px;
+    left: 40px;
+}
+
+.display-gainB{
+	width: 35px;
+	position: absolute;
+	top: 400px;
+    right: 40px;
+}

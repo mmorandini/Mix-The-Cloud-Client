@@ -2,8 +2,8 @@ angular
   .module('mtcApp')
   .controller('TestCtrl', TestCtrl);
 
-TestCtrl.$inject = ['$http', '$window'];
-function TestCtrl($http, $window) {
+TestCtrl.$inject = ['$http', '$window', '$location'];
+function TestCtrl($http, $window, $location) {
   const vm = this;
   
   vm.deck1 = 'SoundCloud';
@@ -18,6 +18,14 @@ function TestCtrl($http, $window) {
   vm.playA = false;
   vm.playB = false;
   
+  
+  // vm.scrolled = false;
+  // vm.wavesurfer = WaveSurfer.create({
+  //   container: '#waveform',
+  //   waveColor: 'violet',
+  //   progressColor: 'purple'
+  // });
+
   /*
 
     UI
@@ -27,8 +35,11 @@ function TestCtrl($http, $window) {
   vm.search = function search() {
     if (vm.searchType === 'Youtube') {
       searchYoutube(vm.query);
+      vm.scrollDown();
+      
     } else {
       searchSoundCloud(vm.query);
+      vm.scrollDown();
     }
   };
 
@@ -41,7 +52,9 @@ function TestCtrl($http, $window) {
         vm.deck1 = 'Youtube';
         youtubePlayer1.loadVideoById(id, 5, "large");
         youtubePlayer1.stopVideo();
+        // console.log(result);
         vm.titleA = result.snippet.title;
+
       } else if (deck == 2) {
         vm.deck2 = 'Youtube';
         youtubePlayer2.loadVideoById(id, 5, "large");
@@ -51,11 +64,13 @@ function TestCtrl($http, $window) {
     } else {
       if (deck == 1){
         vm.deck1 = 'SoundCloud';
-        youtubePlayer1.stopVideo();
+        // youtubePlayer1.stopVideo();
         id = result.id;
         const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
         $('#soundcloudPlayer1').attr('src', url );
         vm.titleA = result.title;
+        // vm.wavesurfer.load(url);
+
       } else {
         vm.deck2 = 'SoundCloud';
         id = result.id;
@@ -75,7 +90,10 @@ function TestCtrl($http, $window) {
         youtubePlayer1.playVideo();
       } else {
         soundcloudPlayer1.play();
-        vm.startWaveform(soundcloudPlayer1);
+        // vm.wavesurfer.on('ready', function () {
+        //   vm.wavesurfer.play();
+        // });
+
       }
       vm.playA = true;
     } else {
@@ -113,17 +131,18 @@ function TestCtrl($http, $window) {
 
   */
 
-  vm.startWaveform = (track) => {
-    SC.get("/tracks/293", function(track){
-      var waveform = new Waveform({
-        container: document.getElementById("waveform"),
-        innerColor: "#333"
-      });
+  // vm.startWaveform = (track) => {
+  //   SC.get("/tracks/293", function(track){
+  //     var waveform = new Waveform({
+  //       container: document.getElementById("waveform"),
+  //       innerColor: "#333"
+  //     });
   
-      waveform.dataFromSoundCloudTrack(track);
-      var streamOptions = waveform.optionsForSyncedStream();
-    });
-  };
+  //     waveform.dataFromSoundCloudTrack(track);
+  //     var streamOptions = waveform.optionsForSyncedStream();
+  //   });
+  // };
+
   /*
   
   AUDIO/VIDEO MANIPULATION
@@ -385,9 +404,15 @@ function TestCtrl($http, $window) {
     });
   }
 
+  vm.scrollDown = scrollDown;
+  function scrollDown (){
+    window.scrollBy(0, 200);
+  }
 }
 
+/// SEARCH SCROLL DOWN
 
+  
 
 
 

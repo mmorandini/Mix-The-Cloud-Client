@@ -1,14 +1,13 @@
-<h1>Mixer... Youtube and Soundcloud...</h1>
 
 
-<div id="waveform"></div>
+
+<!-- <div id="waveform" style="width: 500px, height: 30px;" class="bg-white"></div> -->
 
 <div id="console" class="tc pa2 pt5">
 	<div id="deck1" class="fl w-40">
-		<div id="waveform"></div>
 		<div class="trackA-info">
-			<marquee direction="left" class="display" width="300" height="30" ng-hide="test.titleA"> *** MIX THE CLOUD ***</marquee>
-			<marquee direction="left" class="display" width="300" height="30" ng-show="test.titleA">{{test.titleA}}</marquee>
+			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleA">  ♫ ♪ Mix the cloud&#169 ♪ ♫</marquee>
+			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleA">{{test.titleA}}</marquee>
 		</div>
 		<!-- <h1>Deck 1: {{ test.deck1 ? 'SoundCloud' : 'Youtube' }}</h1> -->
 		<div ng-show="test.deck1 === 'Youtube';" class="yt-wrap-deck1">
@@ -27,24 +26,23 @@
 	
 	<div id="controls" class="fl w-20">
 		<div class="fl w-100 mv3 bg-grey">
-			<div id="deckA-gain-slider">
-				<div class="display display-gainA tc ph2">
-        			<strong class="b">{{ test.gainA }}</strong>
-        		</div>
-				<input ng-init="test.gainA" type="range" orient="vertical" min="0" max="100" step="1" id="deckA-gain-input" ng-change="test.setGainA()" ng-model="test.gainA">
-				
-			</div>
-			<div id="deckB-gain-slider">
-				<div class="display display-gainB tc ph2">
-        			<strong class="b">{{ test.gainB }}</strong>
-        		</div>
-				<input ng-init="test.gainB" type="range" orient="vertical" min="0" max="100" step="1" id="deckB-gain-input" ng-change="test.setGainB()" ng-model="test.gainB">
+			<div id="decks-gain">
+				<div id="deckA-gain-slider">
+					<div class="display display-gainA tc ph2">
+        				<strong class="b">{{ test.gainA }}</strong>
+        			</div>
+					<input ng-init="test.gainA" type="range" orient="vertical" min="0" max=	"100" step="1" id="deckA-gain-input" ng-change="test.setGainA()" 	ng-model="test.gainA">
+					
+				</div>
+				<div id="deckB-gain-slider">
+					<div class="display display-gainB tc ph2">
+        				<strong class="b">{{ test.gainB }}</strong>
+        			</div>
+					<input ng-init="test.gainB" type="range" orient="vertical" min="0" max=	"100" step="1" id="deckB-gain-input" ng-change="test.setGainB()" 	ng-model="test.gainB">
+				</div>
 			</div>
 
-			<div class="display">
-				
-
-			</div>
+			
 			
 			<div id="crossfade-range">
         		<input ng-init="test.crossfade" ng-change="test.fade()" type="range" min="0" max="100" step="1" id="crossfade" ng-model="test.crossfade"/>
@@ -58,7 +56,7 @@
 	<div id="deck2" class="fl w-40">
 		<!-- <h1>Deck 1: {{ test.deck2 ? 'SoundCloud' : 'Youtube' }}</h1> -->
 		<div class="trackB-info">
-			<marquee direction="left" class="display pa1" width="300" height="30" ng-hide="test.titleB"> *** MIX THE CLOUD ***</marquee>
+			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleB">  ♫ ♪ Mix the cloud&#169 ♪ ♫ </marquee>
 			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleB">{{test.titleB}}</marquee>
 		</div>
 		<img src="/images/cover.png" class="coverB">
@@ -75,33 +73,41 @@
 
 	</div>
 	
+	<form ng-submit="test.search()">
+		<div class="fl w-100">
+  			<input ng-model="test.query" class="display pa2 f4" placeholder="Search..">
+  		</div>
+  		<div class="fl w-100 pa2">
+  			<select ng-model="test.searchType" ng-options="type as type for type in 	test.searchTypes" class="display">
+  			</select>
+  		<input type="submit" class="display">
+  		</div>
+	</form>
 </div>
 
 
-<h2>SEARCH</h2>
-<form ng-submit="test.search()">
-  <input ng-model="test.query">
-  <select ng-model="test.searchType" ng-options="type as type for type in test.searchTypes">
-  </select>
-  <input type="submit">
-</form>
+
+
 
 <div style="height: 400px; width: 700px; overflow: auto;" class="m-auto">
 	<ul class="">
 	  <li ng-repeat="result in test.results track by $index" class="">
 	  	<div ng-if="result.title" class="search-results">
-	  		<div class="">	
-	  			<marquee direction="left" width="400">{{result.title | limitTo: 40}}...</marquee>
+	  		<div class="result-title fl w-80">	
+	  			<marquee direction="left" width="350">{{result.title}}</marquee>
 	  		</div>
 	  		<div class="fl w-20">
-	  			<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" ng-model="test.currentA">A</button>
-	  			<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display" ng-model="test.currentB">B</button>
+	  			<button ng-click="test.loadToDeck(1, result)" class="load-btn display" ng-model="test.currentA">A</button>
+	  			<button ng-click="test.loadToDeck(2, result)" class="load-btn display" ng-model="test.currentB">B</button>
 	  		</div>
 	  	</div>
-	  	<div ng-if="!result.title" class="search-results">{{result.snippet.title}}
+	  	<div ng-if="!result.title" class="search-results">
+	  		<div class="result-title fl w-80">
+	  			<marquee direction="left" width="350">{{result.snippet.title}}</marquee>
+	  		</div>
 	  		<div class="fl w-20">
-	  			<button ng-click="test.loadToDeck(1, result)" class="pa2 load-btn display" >A</button>
-	  			<button ng-click="test.loadToDeck(2, result)" class="pa2 load-btn display">B</button>
+	  			<button ng-click="test.loadToDeck(1, result)" class="load-button display" ng-model="test.currentA">A</button>
+	  			<button ng-click="test.loadToDeck(2, result)" class="load-button display" ng-model="test.currentB">B</button>
 	  		</div>
 	  	</div>
 	  </li>
