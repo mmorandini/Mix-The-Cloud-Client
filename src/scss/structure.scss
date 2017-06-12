@@ -45,7 +45,6 @@ button{
 	text-align: right;
 	position: relative;
 	z-index: 2;
-	
 	strong{
 	font-family: 'Codystar', cursive;
 	font-size: 20px;
@@ -54,3 +53,12 @@ button{
 		outline: 0;
 	}
 }
+#waveformA{
+	width: 100%;
+	height: 40px;
+	}
+
+#waveformB{
+	width: 350px;
+	height: 40px;
+	}

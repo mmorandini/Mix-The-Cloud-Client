@@ -4,12 +4,17 @@
 <!-- <div id="waveform" style="width: 500px, height: 30px;" class="bg-white"></div> -->
 
 <div id="console" class="tc pa2 pt5">
+		
+
+	
 	<div id="deck1" class="fl w-40">
-		<div class="trackA-info">
-			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleA">  ♫ ♪ Mix the cloud ♪ ♫</marquee>
-			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleA">{{test.titleA}}</marquee>
+
+		<div class="trackA-info display">
+			<marquee direction="left" class="pa2 righteous f4" width="300" height="30" ng-hide="test.titleA">  ♫ ♪ Mix the cloud ♪ ♫</marquee>
+			<marquee direction="left" class="" width="300" height="30" ng-if="test.titleA">{{test.titleA}}</marquee>
+			<div id="waveformA"></div>
 		</div>
-		<!-- <h1>Deck 1: {{ test.deck1 ? 'SoundCloud' : 'Youtube' }}</h1> -->
+	<!-- <h1>Deck 1: {{ test.deck1 ? 'SoundCloud' : 'Youtube' }}</h1> -->
 		<div ng-show="test.deck1 === 'Youtube';" class="yt-wrap-deck1">
 			<div id="youtubePlayer1" class="yt-player"></div>
 		</div>
@@ -19,7 +24,6 @@
 		<div id="deckA-outer"></div>
 		<div id="deckA-ctrls">
 			<button id="playA" ng-click="test.playDeck1()" class="display"><img id="playA-img" src="/../images/play-pause.png"></button>
-			
 		</div>
 
 	</div>
@@ -32,8 +36,12 @@
         				<strong class="b">{{ test.gainA }}</strong>
         			</div>
 					<input ng-init="test.gainA" type="range" orient="vertical" min="0" max=	"100" step="1" id="deckA-gain-input" ng-change="test.setGainA()" 	ng-model="test.gainA">
-					
 				</div>
+
+
+				<input type="checkbox" id="addFilter">
+				
+
 				<div id="deckB-gain-slider">
 					<div class="display display-gainB tc ph2">
         				<strong class="b">{{ test.gainB }}</strong>
@@ -55,9 +63,10 @@
 	
 	<div id="deck2" class="fl w-40">
 		<!-- <h1>Deck 1: {{ test.deck2 ? 'SoundCloud' : 'Youtube' }}</h1> -->
-		<div class="trackB-info">
-			<marquee direction="left" class="display pa1 righteous" width="300" height="30" ng-hide="test.titleB">  ♫ ♪ Mix the cloud ♪ ♫ </marquee>
-			<marquee direction="left" class="display pa1" width="300" height="30" ng-show="test.titleB">{{test.titleB}}</marquee>
+		<div class="trackB-info display">
+			<marquee direction="left" class="pa2 righteous f4" width="300" height="30" ng-hide="test.titleB">  ♫ ♪ Mix the cloud ♪ ♫ </marquee>
+			<marquee direction="left" width="300" height="30" ng-if="test.titleB">{{test.titleB}}</marquee>
+			<div id="waveformB"></div>
 		</div>
 		<img src="/images/cover.png" class="coverB">
 		<div ng-show="test.deck2 === 'Youtube';" class="yt-wrap-deck2">
@@ -89,7 +98,7 @@
 
 
 
-<div style="height: 400px; width: 600px; overflow: auto;" class="m-auto">
+<div style="height: 400px; width: 600px; overflow: auto;" class="m-auto ba1-white">
 	<ul class="">
 	  <li ng-repeat="result in test.results track by $index" class="">
 	  	<div ng-if="result.title" class="search-results relative">

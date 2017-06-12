@@ -2,31 +2,53 @@ angular
   .module('mtcApp')
   .controller('TestCtrl', TestCtrl);
 
-TestCtrl.$inject = ['$http', '$window', '$location', '$rootScope'];
-function TestCtrl($http, $window, $location, $rootScope) {
+TestCtrl.$inject = ['$http', '$window', '$location', '$rootScope', '$scope', 'ngAudio'];
+function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
   const vm = this;
 
   $rootScope.$broadcast('showHeader');
   
-  vm.deck1 = 'SoundCloud';
-  vm.deck2 = 'SoundCloud';
-  vm.searchType = 'SoundCloud';
-  vm.searchTypes = ['Youtube', 'SoundCloud'];
-  vm.crossfade = 50;
-  vm.gainA = 80;
-  vm.gainB = 80;
-  vm.titleA = '';
-  vm.titleB = '';
-  vm.playA = false;
-  vm.playB = false;
-  
-  
-  // vm.scrolled = false;
-  // vm.wavesurfer = WaveSurfer.create({
-  //   container: '#waveform',
-  //   waveColor: 'violet',
-  //   progressColor: 'purple'
-  // });
+  vm.deck1             = 'SoundCloud';
+  vm.deck2             = 'SoundCloud';
+  vm.searchType        = 'SoundCloud';
+  vm.searchTypes       = ['Youtube', 'SoundCloud'];
+  vm.crossfade         = 50;
+  vm.gainA             = 80;
+  vm.gainB             = 80;
+  vm.titleA            = '';
+  vm.titleB            = '';
+  vm.playA             = false;
+  vm.playB             = false;
+  vm.lowpassFilterOn   = false;
+  var soundcloudPlayer1 = WaveSurfer.create({
+    container: '#waveformA',
+    waveColor: '#009ecb',
+    progressColor: 'grey',
+    height: '30',
+    cursorWidth: '1',
+    fillParent: 'false',
+    cursorColor: 'white',
+    minPxPerSec: '100',
+    pixelRatio: '1',
+    scrollParent: 'true',
+    hideScrollbar: 'true'
+
+  });
+  var soundcloudPlayer2 = WaveSurfer.create({
+    container: '#waveformB',
+    waveColor: '#009ecb',
+    progressColor: 'grey',
+    height: '30',
+    cursorWidth: '1',
+    fillParent: 'false',
+    cursorColor: 'white',
+    minPxPerSec: '100',
+    pixelRatio: '1',
+    scrollParent: 'true',
+    hideScrollbar: 'true'
+
+  });
+  var lowpass = soundcloudPlayer1.backend.ac.createBiquadFilter();
 
   /*
 
@@ -67,17 +89,20 @@ function TestCtrl($http, $window, $location, $rootScope) {
       if (deck == 1){
         vm.deck1 = 'SoundCloud';
         // youtubePlayer1.stopVideo();
+        lowpassFilter();
         id = result.id;
         const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
-        $('#soundcloudPlayer1').attr('src', url );
+        // $('#soundcloudPlayer1').attr('src', url );
+        soundcloudPlayer1.load(url);
         vm.titleA = result.title;
-        // vm.wavesurfer.load(url);
+       
 
       } else {
         vm.deck2 = 'SoundCloud';
         id = result.id;
         const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
-        $('#soundcloudPlayer2').attr('src', url );
+        // $('#soundcloudPlayer2').attr('src', url );
+        soundcloudPlayer2.load(url);
         vm.titleB = result.title;
       }
     }
@@ -92,9 +117,7 @@ function TestCtrl($http, $window, $location, $rootScope) {
         youtubePlayer1.playVideo();
       } else {
         soundcloudPlayer1.play();
-        // vm.wavesurfer.on('ready', function () {
-        //   vm.wavesurfer.play();
-        // });
+        
 
       }
       vm.playA = true;
@@ -129,21 +152,25 @@ function TestCtrl($http, $window, $location, $rootScope) {
 
   /*
 
-  WAVEFORM
+  EFFECTS
 
   */
 
-  // vm.startWaveform = (track) => {
-  //   SC.get("/tracks/293", function(track){
-  //     var waveform = new Waveform({
-  //       container: document.getElementById("waveform"),
-  //       innerColor: "#333"
-  //     });
+  vm.lowpassFilter = lowpassFilter;
+  function lowpassFilter(){
+    $('#addFilter').change(function() {
+
+      console.log('yo');
+      if (vm.lowpassFilterOn === false ){
+          soundcloudPlayer1.backend.setFilter(lowpass);
+          vm.lowpassFilterOn = true;
+      } else {
+        soundcloudPlayer1.backend.disconnect(lowpass);
+        }
+    });
+  }
   
-  //     waveform.dataFromSoundCloudTrack(track);
-  //     var streamOptions = waveform.optionsForSyncedStream();
-  //   });
-  // };
+  
 
   /*
   
@@ -157,13 +184,13 @@ function TestCtrl($http, $window, $location, $rootScope) {
       if (vm.deck1 === 'Youtube'){
         youtubePlayer1.setVolume(vm.deck1Fade * (vm.gainA / 100));
       }else{
-        soundcloudPlayer1.volume = (vm.deck1Fade * (vm.gainA / 100))/100;
+        soundcloudPlayer1.setVolume((vm.deck1Fade * (vm.gainA / 100))/100);
       }
     } else {
       if (vm.deck1 === 'Youtube') {
         youtubePlayer1.setVolume(vm.gainA);
       } else {
-        soundcloudPlayer1.volume = (vm.gainA/100);
+        soundcloudPlayer1.setVolume(vm.gainA/100);
       }
     }
   }
@@ -174,20 +201,19 @@ function TestCtrl($http, $window, $location, $rootScope) {
       if (vm.deck2 === 'Youtube') {
         youtubePlayer2.setVolume(vm.deck2Fade * (vm.gainB / 100));
       } else {
-        soundcloudPlayer2.volume = (vm.deck2Fade * (vm.gainB / 100))/100;
+        soundcloudPlayer2.setVolume((vm.deck2Fade * (vm.gainB / 100))/100);
       }
     }else{
       if (vm.deck2 === 'Youtube'){
         youtubePlayer2.setVolume(vm.gainB);
       }else{
-        soundcloudPlayer2.volume = (vm.gainB/100);
+        soundcloudPlayer2.setVolume(vm.gainB/100);
       }
     }
   }
 
 
   vm.fade = fade;
-  console.log(soundcloudPlayer1.volume);
   function fade() {
     vm.deck1Fade = 100 - (2 * (vm.crossfade - 50));
     vm.deck2Fade = 100 - (2 * (50 - vm.crossfade));
@@ -196,13 +222,13 @@ function TestCtrl($http, $window, $location, $rootScope) {
       if (vm.deck1 === 'Youtube') {
         youtubePlayer1.setVolume(vm.deck1Fade * (vm.gainA / 100));
       } else {
-        soundcloudPlayer1.volume = (vm.deck1Fade * (vm.gainA / 100))/100;
+        soundcloudPlayer1.setVolume((vm.deck1Fade * (vm.gainA / 100))/100);
       }
     } else {
       if (vm.deck1 === 'Youtube') {
         youtubePlayer1.setVolume(vm.gainA);
       } else {
-        soundcloudPlayer1.volume = (vm.gainA/100);
+        soundcloudPlayer1.setVolume(vm.gainA/100);
       }
     }
 
@@ -210,13 +236,13 @@ function TestCtrl($http, $window, $location, $rootScope) {
       if (vm.deck2 === 'Youtube') {
         youtubePlayer2.setVolume(vm.deck2Fade * (vm.gainB / 100));
       } else {
-        soundcloudPlayer2.volume = (vm.deck2Fade * (vm.gainB / 100))/100;
+        soundcloudPlayer2.setVolume((vm.deck2Fade * (vm.gainB / 100))/100);
       }
     } else {
       if (vm.deck2 === 'Youtube') {
         youtubePlayer2.setVolume(vm.gainB);
       } else {
-        soundcloudPlayer2.volume = (vm.gainB/100);
+        soundcloudPlayer2.setVolume(vm.gainB/100);
       }
     }
   }
