@@ -7,4 +7,5 @@ HomeCtrl.$inject = ['$rootScope'];
 function HomeCtrl($rootScope){
 
 	$rootScope.$broadcast('hideHeader');
+
 }

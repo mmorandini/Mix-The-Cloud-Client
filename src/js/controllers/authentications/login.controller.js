@@ -2,10 +2,10 @@ angular
   .module('mtcApp')
   .controller('LoginCtrl', LoginCtrl);
 
-LoginCtrl.$inject = ['User', 'CurrentUserService','$state'];
-function LoginCtrl(User, CurrentUserService, $state) {
+LoginCtrl.$inject = ['User', 'CurrentUserService','$state','$rootScope'];
+function LoginCtrl(User, CurrentUserService, $state, $rootScope) {
   const vm = this;
-
+  $rootScope.$broadcast('showHeader');
   vm.login = () => {
     User
       .login(vm.user)

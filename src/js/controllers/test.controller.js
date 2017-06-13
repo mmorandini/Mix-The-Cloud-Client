@@ -20,6 +20,10 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
   vm.playA             = false;
   vm.playB             = false;
   vm.lowpassFilterOn   = false;
+  vm.tempoA            = 1;
+  vm.tempoB            = 1;
+
+
   var soundcloudPlayer1 = WaveSurfer.create({
     container: '#waveformA',
     waveColor: '#009ecb',
@@ -30,13 +34,13 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
     cursorColor: 'white',
     minPxPerSec: '100',
     pixelRatio: '1',
-    scrollParent: 'true',
-    hideScrollbar: 'true'
+    scrollParent: 'true'
+    // hideScrollbar: 'true'
 
   });
   var soundcloudPlayer2 = WaveSurfer.create({
-    container: '#waveformB',
-    waveColor: '#009ecb',
+    container: '#waveformA',
+    waveColor: 'lime',
     progressColor: 'grey',
     height: '30',
     cursorWidth: '1',
@@ -44,8 +48,8 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
     cursorColor: 'white',
     minPxPerSec: '100',
     pixelRatio: '1',
-    scrollParent: 'true',
-    hideScrollbar: 'true'
+    scrollParent: 'true'
+    // hideScrollbar: 'true'
 
   });
   var lowpass = soundcloudPlayer1.backend.ac.createBiquadFilter();
@@ -117,8 +121,6 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
         youtubePlayer1.playVideo();
       } else {
         soundcloudPlayer1.play();
-        
-
       }
       vm.playA = true;
     } else {
@@ -177,6 +179,18 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
   AUDIO/VIDEO MANIPULATION
     
   */
+
+  vm.setTempoA = setTempoA;
+  function setTempoA(){
+        soundcloudPlayer1.setPlaybackRate(vm.tempoA);
+        console.log('tempo A: ', vm.tempoA);
+  }
+
+  vm.setTempoB = setTempoB;
+  function setTempoB(){
+        soundcloudPlayer2.setPlaybackRate(vm.tempoB);
+        console.log('tempo B: ', vm.tempoB);
+     }
 
   vm.setGainA = setGainA;
   function setGainA(){
