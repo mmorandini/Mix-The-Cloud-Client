@@ -1,51 +1,51 @@
 <form ng-submit="register.register()" class="measure center" name="register.registerForm" novalidate>
-  <h1>Register</h1>
+  <h1 class="display f3 tc m-auto">Register</h1>
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="username">Username</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="username" ng-model="register.user.username" placeholder="JohnDoe" required>
+    <label class="db fw6 lh-copy f6 white" for="username">Username</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="text" name="username" ng-model="register.user.username" placeholder="JohnDoe" required>
   </div>
-  <div class="ng-message-error" ng-messages="register.registerForm.username.$error" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched)">
+  <div class="ng-message-error bg-white" ng-messages="register.registerForm.username.$error" ng-show="(register.registerForm.$submitted || register.registerForm.username.$touched)">
     <p ng-message="required">This field is required</p>
   </div>
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="name">First name</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name" ng-model="register.user.first_name" placeholder="e.g. John">
+    <label class="db fw6 lh-copy f6 white" for="name">First name</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="text" name="name" ng-model="register.user.first_name" placeholder="e.g. John">
   </div>
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="name">Last name</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name" ng-model="register.user.last_name" placeholder="e.g. Doe">
+    <label class="db fw6 lh-copy f6 white" for="name">Last name</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="text" name="name" ng-model="register.user.last_name" placeholder="e.g. Doe">
   </div>
 
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="Image">Image</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="image" ng-model="register.user.image" placeholder="Paste Image address here">
+    <label class="db fw6 lh-copy f6 white" for="Image">Image</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="text" name="image" ng-model="register.user.image" placeholder="Paste Image address here">
   </div>
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="email">Email</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email" ng-model="register.user.email" ng-pattern="register.emailValidate" placeholder="e.g. john@email.com" required>
+    <label class="db fw6 lh-copy f6 white" for="email">Email</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="email" name="email" ng-model="register.user.email" ng-pattern="register.emailValidate" placeholder="e.g. john@email.com" required>
   </div>
-  <div class="ng-message-error" ng-messages="register.registerForm.email.$error" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched)">
+  <div class="ng-message-error white" ng-messages="register.registerForm.email.$error" ng-show="(register.registerForm.$submitted || register.registerForm.email.$touched)">
     <p ng-message="required">This field is required</p>
     <p ng-message="pattern">Please enter a valid email address</p>
   </div>
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="password">Password</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password" ng-model="register.user.password" placeholder="Must be 6 characters long" required minlength="6">
+    <label class="db fw6 lh-copy f6 white" for="password">Password</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="password" name="password" ng-model="register.user.password" placeholder="Must be 6 characters long" required minlength="6">
   </div>
-  <div class="ng-message-error" ng-messages="register.registerForm.password.$error" ng-show="(register.registerForm.$submitted || register.registerForm.password.$touched)">
+  <div class="ng-message-error white" ng-messages="register.registerForm.password.$error" ng-show="(register.registerForm.$submitted || register.registerForm.password.$touched)">
     <p ng-message="required">This field is required</p>
     <p ng-message="minlength">Your password must be at least 6 characters</p>
   </div>
   <div class="mv3">
-    <label class="db fw6 lh-copy f6" for="password_confirmation">Password Confirmation</label>
-    <input class="pl pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="passwordConfirmation" ng-model="register.user.password_confirmation" placeholder="Password confirmation" required ng-pattern="register.user.password">
+    <label class="db fw6 lh-copy f6 white" for="password_confirmation">Password Confirmation</label>
+    <input class="pl pa2 input-reset ba bg-white white hover-bg-white hover-black w-100" type="password" name="passwordConfirmation" ng-model="register.user.password_confirmation" placeholder="Password confirmation" required ng-pattern="register.user.password">
   </div>
   <div class="ng-message-error" ng-messages="register.registerForm.passwordConfirmation.$error" ng-show="(register.registerForm.$submitted || register.registerForm.passwordConfirmation.$touched)">
     <p ng-message="required">This field is required</p>
     <p ng-message="pattern">This must match your password</p>
   </div>
-  <input class="b ph3 pv2 input-reset ba bg-transparent grow pointer f6 dib apply-btn" type="submit" value="Register">
+  <input class="pa2 input-reset ba display grow pointer dib" type="submit" value="Register">
   <div class="mv3">
-    <p>Already have an account?</p><a ui-sref="login" class="f6 link dim black">Log in</a>
+    <p>Already have an account?</p><a ui-sref="login" class="f6 link dim white grow">Log in</a>
   </div>
 </form>

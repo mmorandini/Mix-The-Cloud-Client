@@ -70,12 +70,12 @@
         <div class="search-group">
        		<form ng-submit="test.search()">
 				<div class="pa2">
-  					<input ng-model="test.query" class="display pa2 f4" placeholder="	Search..">
+  					<input ng-model="test.query" class="display pa2 f4 bn" placeholder="Search..">
   				</div>
   				<div class="">
-  					<select ng-model="test.searchType" ng-options="type as type for type 	in 		test.searchTypes" class="display">
+  					<select ng-model="test.searchType" ng-options="type as type for type in 		test.searchTypes" class="display ba-white">
   					</select>
-  				<button type="submit" class="display" style="border-width: 1px;">Search</button>
+  				<button type="submit" class="display ba-white grow pointer" style="border-width: 1px;">Search</button>
   				</div>
 			</form>
 		</div>

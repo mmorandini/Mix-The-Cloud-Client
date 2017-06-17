@@ -22,7 +22,7 @@
 <body ng-controller="MainCtrl as main">
   <header ng-if="main.showHeader">
     <nav class="pa3 pa4-ns">
-      <a href="/"><img class="navbar-logo nav-link" src="/images/white-logo.png" alt=""></a>
+      <img class="navbar-logo nav-link" src="/images/white-logo.png" alt="" ui-sref="test">
       <a ui-sref="login" ng-show="!main.user" class="link dim gray    f6 f5-ns dib mr3 fr">Login</a>
       <a ui-sref="register" ng-show="!main.user" class="link dim gray    f6 f5-ns dib mr3 fr">Register</a>
       <a ng-click="main.logout()" ng-show="main.user" class="link dim gray    f6 f5-ns dib mr3 fr">Logout</a>
