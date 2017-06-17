@@ -6,7 +6,6 @@ angular
   'angular-jwt',
   'ngAnimate',
   'ngMessages',
-  'ngMaterial',
   'ngAudio'
 ]);
 
