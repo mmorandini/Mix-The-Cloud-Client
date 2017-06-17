@@ -23,5 +23,8 @@
     "angular-messages": "^1.6.4",
     "animate.css": "^3.5.2",
     "angular-audio": "^1.7.3"
+  },
+  "resolutions": {
+    "angular": "1.2.0-rc.2"
   }
 }
