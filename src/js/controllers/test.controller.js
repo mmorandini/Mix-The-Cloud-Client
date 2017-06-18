@@ -95,7 +95,7 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
         // youtubePlayer1.stopVideo();
         lowpassFilter();
         id = result.id;
-        const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
+        const url    = `https://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
         // $('#soundcloudPlayer1').attr('src', url );
         soundcloudPlayer1.load(url);
         vm.titleA = result.title;
@@ -104,7 +104,7 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
       } else {
         vm.deck2 = 'SoundCloud';
         id = result.id;
-        const url    = `http://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
+        const url    = `https://api.soundcloud.com/tracks/${id}/stream?client_id=uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM`;
         // $('#soundcloudPlayer2').attr('src', url );
         soundcloudPlayer2.load(url);
         vm.titleB = result.title;
