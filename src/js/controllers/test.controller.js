@@ -414,8 +414,8 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
 
   const SOUNDCLOUD_KEY = 'uuWqQ2079j0Dp2awBVJwpa3q7RnBdMiM';
 
-  // CORS issue here!
-  // searchSoundCloud('Villalobos mix');
+  // CORS issue here! *** FIXED ***
+  
 
   function searchSoundCloud(query) {
     const maxResults = 50;
@@ -431,8 +431,7 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
     });
   }
 
-  // const trackId = '90787841'
-  // getSoundCloudInformation(trackId)
+  
 
 
   function getSoundCloudInformation(trackId) {
