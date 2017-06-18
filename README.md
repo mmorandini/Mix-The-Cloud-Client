@@ -1,4 +1,4 @@
- <img src="http://i.imgur.com/MJAhVsh.png" height="70"/>
+ <img src="http://i.imgur.com/MJAhVsh.png" height="70">
  
  <h2>Genesis</h2>
  <p>I've always been involved in djing and electronic music in general. </p>
@@ -19,6 +19,8 @@
 <li>Design a logo.</li>
 </ul>
  <p>Those who have spent sometime djing will know that these are pretty much the essential functionalities in a dj console (not the logo, of course, that's just a plus), so I decided I'd have started from these points, and I have used trello to divide my tasks day by day.</p>
+ <img src="https://raw.githubusercontent.com/mmorandini/wdi-project-4-client/master/src/images/trello-board.png" width="600">
+ 
  <h2>Development</h2>
  <p></p>
  <h2>Technologies</h2>
