@@ -137,3 +137,5 @@ The way I decided to work it out is therefore to display the waveforms of the tw
  
  <h2>Feedbacks</h2>
  <p>Please send any feedback or improvement to emmemorandini@gmail.com or fork the code from Github <a href="https://github.com/mmorandini/wdi-project-4-client">here</a>.</p>
+ <small>Author:</small> Matteo Morandini<br>
+ <small>First Release:</small> 16 June 2017
