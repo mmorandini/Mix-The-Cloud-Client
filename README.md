@@ -18,7 +18,7 @@
 <li>Add sound effects.</li>
 <li>Design a logo.</li>
 </ul>
- <p>Those who have spent sometime djing will know that these are pretty much the essential functionalities in a dj console (not the logo, of course, that's just a plus), so I decided I'd have started from these points, and I have used trello to divide my tasks day by day.</p>
+ <p>Those who have spent sometime djing will know that these are pretty much the essential functionalities in a dj console (not the logo, of course, that's just a whing), so I decided I'd have started from these points, and I have used trello to divide my tasks day by day.</p>
  <img src="https://raw.githubusercontent.com/mmorandini/wdi-project-4-client/master/src/images/trello-board.png" width="600">
  
  <h2>Development</h2>
