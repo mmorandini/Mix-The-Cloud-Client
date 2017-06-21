@@ -114,6 +114,9 @@ function searchYoutube(query) {
 <p>
 The way I decided to work it out is therefore to display the waveforms of the two tracks one on top of the other so that users will have to match the beats and adjust the tempo based on what they see on the display.
 </p>
+<h2>Styling</h2>
+
+<img src="https://raw.githubusercontent.com/mmorandini/wdi-project-4-client/master/src/images/console-preview.png"></img>
  
  <h2>Technologies</h2>
  <ul>
