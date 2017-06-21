@@ -38,7 +38,7 @@ const buildJs = () => {
     fetchLocalJs()
   )
   .pipe(order([config.vendor.js, config.selectors.js]))
-  .pipe(gulpIf(global.production, replace('http://localhost:4000', process.env.API_URL)))
+  .pipe(gulpIf(global.production, replace('http://localhost:3000', process.env.API_URL)))
   .pipe(concat(config.output.js))
   .pipe(sourcemaps.init())
   .pipe(gulpIf(global.production, uglify()))
