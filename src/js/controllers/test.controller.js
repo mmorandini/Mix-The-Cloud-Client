@@ -36,8 +36,9 @@ function TestCtrl($http, $window, $location, $rootScope, $scope, ngAudio) {
     pixelRatio: '1',
     scrollParent: 'true'
     // hideScrollbar: 'true'
-
   });
+
+
   var soundcloudPlayer2 = WaveSurfer.create({
     container: '#waveformA',
     waveColor: 'lime',

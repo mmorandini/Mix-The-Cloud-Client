@@ -120,7 +120,6 @@ The way I decided to work it out is therefore to display the waveforms of the tw
  
  <h2>Technologies</h2>
  <ul>
- <li>Express</li>
  <li>Gulp</li>
  <li>Babel</li>
  <li>Bcrypt</li>
